@@ -33,13 +33,12 @@ esac
 
 zshdir=~/System/Zsh
 
-source ~zshdir/completes.zsh
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
 
 if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]; then
     source ~zshdir/work.zsh
-else if [[ -e ~zshdir/home.zsh ]]; then
+else if [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]; then
     source ~zshdir/home.zsh
 fi
 fi
