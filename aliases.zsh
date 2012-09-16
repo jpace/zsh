@@ -1,4 +1,4 @@
-#!/usr/local/bin/zsh
+#!/usr/bin/zsh
 # -*- sh -*-
 
 # find shortcuts
@@ -9,7 +9,7 @@ alias fjsrc="find src/main/java -name '*.java' | xargs glark $*"
 alias fjtst="find src/test/java -name '*.java' | xargs glark $*"
 
 alias ft="find . -name '*.txt' | xargs glark $*"
-alias fr="find . -name '*.*rb' | xargs glark $*"
+alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | xargs glark $*"
 alias fx="find . -name '*.xml' | xargs glark $*"
 alias fbx="find . -name 'build*.xml' | xargs glark $*"
 alias fxml="find . -name '*.xml' | xargs glark $*"
@@ -35,6 +35,9 @@ alias l='ls -CF'
 alias la='ls -aCF'
 alias sd='ls -alF'
 alias sdd='ls -alFd'
+alias lslr='ls -lrta'
+alias sdr='ls -lrta'
+alias sds='ls -lta'
 
 alias c='clear'
 alias a='alias'
@@ -71,13 +74,17 @@ alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-
 
 alias gct='gradle clean test'
 alias gr='gradle '
+alias gb='gradle build'
+alias gt='gradle test'
 
 gst() { gradle test -Dtest.single=$* }
 
 alias gitdfs='git diff --stat HEAD'
 alias gitst='git status'
 
-alias gitpullall='git pull origin master; git submodule foreach git pull'
+alias gitpullall='git pull origin master; git submodule foreach git pull origin master'
 alias gitpushall='git push -u origin master; git submodule foreach git push -u origin master'
 
 alias gpom='git push -u origin master'
+
+alias sl='svn log -l 5'

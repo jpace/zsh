@@ -2,8 +2,8 @@
 # -*- sh -*-
 
 export JAVA_COMPILER=NONE
-export JAVA_HOME=/usr/java/jdk1.5.0_22
-export JAVA_HOME=/usr/lib/jvm/java-6-openjdk/jre
+# export JAVA_HOME=/usr/java/jdk1.5.0_22
+export JAVA_HOME=/usr/lib/jvm/java-6-openjdk
 
 # standard stuff:
 export CLASSPATH=/usr/java/jre/lib:/usr/java/lib:.:~/lib/java
