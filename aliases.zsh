@@ -88,3 +88,7 @@ alias gitpushall='git push -u origin master; git submodule foreach git push -u o
 alias gpom='git push -u origin master'
 
 alias sl='svn log -l 5'
+
+alias rtu='rake test'
+alias rti='rake test:integration'
+alias rt='ruby -Itest -Itest/unit -Ilib'
