@@ -15,6 +15,11 @@ alias fbx="find . -name 'build*.xml' | xargs glark $*"
 alias fxml="find . -name '*.xml' | xargs glark $*"
 alias fjmd="find ~jmet ~jass ~jmtest ~svrmd -name '*.java' | xargs glark $*"
 
+alias frlib="find lib -name '*' | xargs glark $*"
+alias frtest="find test -name '*' | xargs glark $*"
+alias frtu="find test/unit -name '*' | xargs glark $*"
+alias frti="find test/integration -name '*' | xargs glark $*"
+
 # C++ files
 alias fc="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark $*"
 alias fcm="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark -M $*"
