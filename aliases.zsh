@@ -2,30 +2,30 @@
 # -*- sh -*-
 
 # find shortcuts
-alias f='find . -name '
-alias ff='find . -type f -name'
-alias fj="find . -name '*.java' | xargs glark $*"
-alias fjsrc="find src/main/java -name '*.java' | xargs glark $*"
-alias fjtst="find src/test/java -name '*.java' | xargs glark $*"
+alias f='find . -name | sort'
+alias ff='find . -type f -name | sort'
+alias fj="find . -name '*.java' | sort | xargs glark $*"
+alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
+alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
 
-alias ft="find . -name '*.txt' | xargs glark $*"
-alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | xargs glark $*"
-alias fx="find . -name '*.xml' | xargs glark $*"
-alias fbx="find . -name 'build*.xml' | xargs glark $*"
-alias fxml="find . -name '*.xml' | xargs glark $*"
-alias fjmd="find ~jmet ~jass ~jmtest ~svrmd -name '*.java' | xargs glark $*"
+alias ft="find . -name '*.txt' | sort | xargs glark $*"
+alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | sort | xargs glark $*"
+alias fx="find . -name '*.xml' | sort | xargs glark $*"
+alias fbx="find . -name 'build*.xml' | sort | xargs glark $*"
+alias fxml="find . -name '*.xml' | sort | xargs glark $*"
+alias fjmd="find ~jmet ~jass ~jmtest ~svrmd -name '*.java' | sort | xargs glark $*"
 
-alias frlib="find lib -name '*.rb' | xargs glark $*"
-alias frtest="find test -name '*.rb' | xargs glark $*"
-alias frtu="find test/unit -name '*.rb' | xargs glark $*"
-alias frti="find test/integration -name '*.rb' | xargs glark $*"
+alias frlib="find lib -name '*.rb' | sort | xargs glark $*"
+alias frtest="find test -name '*.rb' | sort | xargs glark $*"
+alias frtu="find test/unit -name '*.rb' | sort | xargs glark $*"
+alias frti="find test/integration -name '*.rb' | sort | xargs glark $*"
 
 # C++ files
 alias fc="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark $*"
 alias fcm="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark -M $*"
 alias fcco="find . \( -name '*.h' -o -name '*.cpp' \) -perm -600"
 
-alias fall="find . \( -name .svn -prune \) -o -type f -print0 | xargs -0 glark $*"
+alias fall="find . \( -name .svn -prune \) -o -type f -print0 | sort | xargs -0 glark $*"
 
 alias h='history -5000'
 alias hg="history -5000 | egrep $*"
