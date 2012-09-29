@@ -2,7 +2,8 @@
 # -*- sh -*-
 
 # find shortcuts
-alias f='find . -name | sort'
+f() { find . -name $* | sort }
+
 alias ff='find . -type f -name | sort'
 alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
@@ -62,6 +63,7 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 alias pd='push d'
 alias ret='popd'
+alias dv='dirs -v'
 
 alias grep='glark --grep'
 alias -g G='| glark'
