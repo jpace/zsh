@@ -101,3 +101,6 @@ alias sl='svn log -l 5'
 alias rtu='rake test'
 alias rti='rake test:integration'
 alias rt='ruby -Itest -Itest/unit -Ilib'
+
+alias rt19='ruby1.9.1 -Itest -Itest/unit -Ilib'
+alias rake19='rake1.9.1'

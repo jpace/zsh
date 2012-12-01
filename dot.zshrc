@@ -58,3 +58,5 @@ if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
        mesg n
 fi
 
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
