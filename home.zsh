@@ -17,5 +17,6 @@ hash -d ijdktst=~ijdkproj/src/test/java/org/incava/ijdk
 hash -d pvn=~incava/pvn
 hash -d riel=~incava/riel
 hash -d glark=~incava/glark
+hash -d ragol=~incava/ragol
 
 hash -d incava.org=~/proj/rails.incava.org
