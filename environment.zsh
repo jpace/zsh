@@ -15,7 +15,7 @@ export CLASSPATH=$CLASSPATH:/usr/java/lib/junit.jar
 export ANT_HOME=/usr/share/apache-ant-1.8.2
 export GRADLE_HOME=/Programs/org/gradle/gradle-1.4
 export SCALA_HOME=/Programs/org/scala/scala-2.10.0
-export PATH=`~/bin/mkpath $JAVA_HOME/bin:$SCALA_HOME/bin:$PATH:.:$ANT_HOME/bin:$GRADLE_HOME/bin`
+export PATH=`~/bin/mkpath /home/jpace/.rvm/gems/ruby-2.0.0-p247/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$PATH:.:$ANT_HOME/bin:$GRADLE_HOME/bin`
 
 export PERL5LIB=~/lib/perl5
 export RUBYLIB=~/lib/ruby

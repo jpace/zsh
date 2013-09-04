@@ -14,10 +14,13 @@ hash -d ijdkproj=~incava/ijdkproj
 hash -d ijdksrc=~ijdkproj/src/main/java/org/incava/ijdk
 hash -d ijdktst=~ijdkproj/src/test/java/org/incava/ijdk
 
-hash -d pvn=~incava/pvn
-hash -d riel=~incava/riel
 hash -d glark=~incava/glark
-hash -d ragol=~incava/ragol
 hash -d logue=~incava/logue
+hash -d pvn=~incava/pvn
+hash -d ragol=~incava/ragol
+hash -d riel=~incava/riel
+hash -d svnx=~incava/svnx
+hash -d synoption=~incava/synoption
 
 hash -d incava.org=~/proj/rails.incava.org
+hash -d incava.rails=~/proj/org/incava/rails

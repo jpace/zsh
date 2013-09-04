@@ -69,6 +69,9 @@ alias grep='glark --grep'
 alias -g G='| glark'
 alias -g XG='| xargs glark'
 
+alias -g S='| sort'
+alias -g SN='| sort -n'
+
 alias syncp4='p4 sync ...'
 alias peekp4='p4 sync -n ...'
 
