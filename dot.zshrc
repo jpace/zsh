@@ -6,6 +6,20 @@ cdpath=(~ ..)
 
 path=(~/bin $path)
 
+fpath=(~/lib/zsh ~/System/Zsh $fpath)
+autoload -U compinit
+compinit
+
+autoload -U promptinit && promptinit
+
+setopt PROMPT_SUBST
+
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '±' && return
+    svn info >/dev/null 2>/dev/null && echo '☿' && return
+    echo ' '
+}
+
 PROMPT2='> '
 PROMPT3='+ '
 
@@ -15,7 +29,7 @@ PROMPT3='+ '
 # just the time
 RPROMPT="%*"
 
-PS1=$'%B%~%b%# '
+PROMPT=$'%B%~%b$(prompt_char)%# '
 
 ## functions for displaying neat stuff in *term title
 case $TERM in
