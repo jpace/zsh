@@ -6,18 +6,24 @@ cdpath=(~ ..)
 
 path=(~/bin $path)
 
+setopt promptsubst
+
 fpath=(~/lib/zsh ~/System/Zsh $fpath)
-autoload -U compinit
-compinit
-
+autoload -U compinit && compinit
 autoload -U promptinit && promptinit
+autoload -U colors && colors
 
-setopt PROMPT_SUBST
+setopt prompt_subst
 
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '±' && return
     svn info >/dev/null 2>/dev/null && echo '☿' && return
     echo ' '
+}
+
+function git_branch {
+    git symbolic-ref --short HEAD
+    # echo branch
 }
 
 PROMPT2='> '
@@ -27,9 +33,22 @@ PROMPT3='+ '
 # RPROMPT="%~ %m %*"
 
 # just the time
-RPROMPT="%*"
+RPROMPT="$(git_branch)%*"
 
-PROMPT=$'%B%~%b$(prompt_char)%# '
+# PROMPT=$'%B%~%b$(prompt_char)%# '
+
+# get the name of the branch we are on
+git_prompt_info() { 
+    git branch | awk '/^\*/ { print $2 }'
+}
+get_git_dirty() { 
+    git diff --quiet || echo '*'
+}
+
+PROMPT="%{$fg[blue]%}%c %{$fg_bold[red]%}$(git_branch)$(get_git_dirty)%{$fg[blue]%} $ %{$reset_color%}"
+
+# RPROMPT="%{$bg[green]%}$(git_branch)%{$reset_color%}"
+RPROMPT="%F{2}$(git_branch)%%f"
 
 ## functions for displaying neat stuff in *term title
 case $TERM in
@@ -72,5 +91,8 @@ if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
        mesg n
 fi
 
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+zstyle ':prompt:ganneff' colors true
+
+source ~zshdir/prompt_ganneff_setup
