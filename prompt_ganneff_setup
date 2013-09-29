@@ -55,7 +55,7 @@ prompt_ganneff_help () {
     The available items are: at, battery, change-root, date, history,
     host, jobs, newline, path, percent, rc, rc-always, shell-level,
     time, user, vcs, ulcorner, llcorner, urcorner, lrcorner, line, pts,
-    privileges, openparentheses, closeparentheses, openbracket,
+    privileges, openparenthesis, closeparenthesis, openbracket,
     closebracket, openbraces, closebraces, openanglebracket,
     closeanglebracket, colon, pipe, space, flexline
 
@@ -250,6 +250,15 @@ prompt_ganneff_setup () {
                     eval PR_BOLD_$COLOR='%{$fg_bold[${(L)COLOR}]%}'
                 done
                 eval PR_NO_COLOR='%{$reset_color%}'
+                PR_USER=$'%{\e[38;5;190m%}'
+                PR_HOST=$'%{\e[38;5;190m%}'
+                PR_HISTORY=$'%{\e[38;5;190m%}'
+                PR_PATH=$'%{\e[38;5;185m%}'
+                PR_VCS_TYPE=$''
+                PR_GIT_BRANCH=$'%{\e[38;5;77m%}'
+                PR_GIT_REVISION=$'%{\e[38;5;94m%}'
+                PR_SVN_BRANCH=$'%{\e[38;5;81m%}'
+                PR_SVN_REVISION=$'%{\e[38;5;81m%}'
             else
                 PR_BLUE=$'%{\e[1;34m%}'
                 PR_RED=$'%{\e[1;31m%}'
@@ -297,6 +306,7 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         if zstyle -T ':prompt:ganneff' set_vcs_info_defaults; then
             # gather version control information for inclusion in a prompt
             # we will only be using one variable, so let the code know now.
+	    zstyle ':vcs_info:*' enable git svn
             zstyle ':vcs_info:*' max-exports 1
             zstyle ':vcs_info:*' use-prompt-escapes
             zstyle ':vcs_info:*' use_simple
@@ -305,9 +315,13 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
             zstyle ':vcs_info:*' check-for-changes true
 
             # change vcs_info formats for the prompt
-            zstyle ':vcs_info:(sv[nk]|bzr):*' branchformat "${PR_YELLOW}%b%{${PR_RED}%}:${PR_YELLOW}%r${PR_NO_COLOR}"
-            zstyle ':vcs_info:*' formats "(${PR_YELLOW}%s${PR_NO_COLOR})-[${PR_GREEN}%b${PR_NO_COLOR}]%m%u%c "
-            zstyle ':vcs_info:*' actionformats "(${PR_YELLOW}%s${PR_NO_COLOR})-[${PR_GREEN}%b${PR_NO_COLOR}-${PR_RED}(%a)${PR_NO_COLOR}]%m%u%c "
+            zstyle ':vcs_info:svn:*' branchformat "${PR_SVN_BRANCH}%b:${PR_SVN_REVISION}%r${PR_NO_COLOR}"
+
+            zstyle ':vcs_info:svn:*' formats "[${PR_SVN_BRANCH}%b${PR_NO_COLOR}]%m%u%c"
+            zstyle ':vcs_info:svn:*' actionformats "(${PR_YELLOW}act%s${PR_NO_COLOR})-[${PR_GREEN}%b${PR_NO_COLOR}-${PR_SVN_REVISION}(%a)${PR_NO_COLOR}]%m%u%c"
+
+            zstyle ':vcs_info:git:*' formats "[${PR_GIT_BRANCH}%b${PR_NO_COLOR}]%m%u%c"
+            zstyle ':vcs_info:git:*' actionformats "(${PR_YELLOW}act%s${PR_NO_COLOR})-[${PR_GREEN}%b${PR_NO_COLOR}-${PR_RED}(%a)${PR_NO_COLOR}]%m%u%c"
         fi
     fi
 
@@ -327,13 +341,14 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         host               '${PR_RED}'
         jobs               '${PR_CYAN}'
         newline            ''
-        path               '${PR_MAGENTA}'
+        path               '${PR_PATH}'
         percent            ''
         rc                 '${PR_RED}'
         rc-always          ''
+        rc-status          ''
         shell-level        '${PR_RED}'
         time               '${PR_BLUE}'
-        user               '${PR_BLUE}'
+        user               '${PR_USER}'
         vcs                ''
         ulcorner           '${PR_SHIFT_IN}'
         llcorner           '${PR_SHIFT_IN}'
@@ -342,8 +357,8 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         line               '${PR_SHIFT_IN}'
         pts                ''
         privileges         ''
-        openparentheses    ''
-        closeparentheses   ''
+        openparenthesis    ''
+        closeparenthesis   ''
         openbracket        ''
         closebracket       ''
         openbraces         ''
@@ -370,6 +385,7 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         percent           ''
         rc                '${PR_NO_COLOR}'
         rc-always         ''
+	rc-status         ''
         shell-level       '${PR_NO_COLOR}'
         time              '${PR_NO_COLOR}'
         user              '${PR_NO_COLOR}'
@@ -381,8 +397,8 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         line              '${PR_SHIFT_OUT}'
         pts               ''
         privileges        ''
-        openparentheses   ''
-        closeparentheses  ''
+        openparenthesis   ''
+        closeparenthesis  ''
         openbracket       ''
         closebracket      ''
         openbraces        ''
@@ -408,6 +424,7 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         percent           '%# '
         rc                '%(?..%? )'
         rc-always         '%?'
+        rc-status         '%(?.%?.${PR_RED}%?${PR_NO_COLOR})'
         shell-level       '%(2L.%L.)'
         time              '%D{%H:%M:%S}'
         user              '%n'
@@ -419,8 +436,8 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
         line              '${PR_HBAR}'
         pts               '%y'
         privileges        '%#'
-        openparentheses   '('
-        closeparentheses  ')'
+        openparenthesis   '('
+        closeparenthesis  ')'
         openbracket       '['
         closebracket      ']'
         openbraces        '{'
@@ -481,13 +498,15 @@ prompt_ganneff_precmd () {
     zstyle -T ':prompt:ganneff' vcs_info && vcs_info
     local -a left_items right_items drop_words
 
-    left_items=(ulcorner line openparantheses user at host colon pts closeparantheses line history
-        line shell-level line flexline openparentheses path closeparentheses line urcorner newline
-        llcorner line rc openparentheses time closeparentheses line vcs line change-root pipe space)
+    # left_items=(ulcorner line openparantheses user at host colon pts closeparantheses line history
+    #     line shell-level line flexline openparenthesis path closeparenthesis line urcorner newline
+    #     llcorner line rc openparenthesis time closeparenthesis line vcs line change-root pipe space)
+    left_items=(openparenthesis path closeparenthesis llcorner line vcs line openparenthesis rc-status closeparenthesis percent)
     PR_PS1=""; nomore=0
     ganneff_prompt_addto PS1 full "${left_items[@]}"
     if zstyle -T ":prompt:ganneff:right:setup" use-rprompt; then
-        right_items=(pipe line openparentheses date closeparentheses line lrcorner)
+        # right_items=(pipe line openparenthesis date closeparenthesis line lrcorner)
+	right_items=()
         ganneff_prompt_addto RPS1 full "${right_items[@]}"
     fi
 
@@ -497,9 +516,9 @@ prompt_ganneff_precmd () {
         PR_FLEXLINE=${${(el.(($TERMWIDTH - $promptsize ))..X.)}//X/$PR_HBAR}
     else
         # Small size prompt is needed
-        left_items=(ulcorner line openparentheses user at host closeparentheses line openparentheses
-            path closeparentheses newline
-            llcorner line rc openparentheses time closeparentheses line vcs line pipe space)
+        left_items=(ulcorner line openparenthesis user at host closeparenthesis line openparenthesis
+            path closeparenthesis newline
+            llcorner line rc openparenthesis time closeparenthesis line vcs line pipe space)
         ganneff_prompt_addto PS1 small "${left_items[@]}"
         # And with a small prompt, we don't show the right size at all.
         RPS1=""
