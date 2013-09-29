@@ -4,14 +4,31 @@
 # find shortcuts
 f() { find . -name $* | sort }
 
-alias ff='find . -type f -name | sort'
+ff () {
+    local re
+    
+    if [[ -e 'Rakefile' ]]; then
+	re='.*.rb$'
+    elif [[ -e 'build.xml' || -e 'build.gradle' ]]; then
+	re='.*.java$'
+    elif [[ -e 'config.ru' ]]; then
+	re='.*.e?rb$'
+    else
+	re='.*'
+    fi
+    find . -regex ${re} | sort
+}
+
+fx () {
+    ff | xargs glark $*
+}
+
 alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
 alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
 
 alias ft="find . -name '*.txt' | sort | xargs glark $*"
 alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | sort | xargs glark $*"
-alias fx="find . -name '*.xml' | sort | xargs glark $*"
 alias fbx="find . -name 'build*.xml' | sort | xargs glark $*"
 alias fxml="find . -name '*.xml' | sort | xargs glark $*"
 alias fjmd="find ~jmet ~jass ~jmtest ~svrmd -name '*.java' | sort | xargs glark $*"

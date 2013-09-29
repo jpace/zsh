@@ -94,5 +94,7 @@ fi
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 zstyle ':prompt:ganneff' colors true
+# I can't get this to work; right prompt is still printed:
+# zstyle ':prompt:ganneff:right:setup' use-rprompt false
 
 source ~zshdir/prompt_ganneff_setup
