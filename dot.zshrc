@@ -90,6 +90,9 @@ if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
        bindkey "\eOw" down-line-or-history
        mesg n
 fi
+export TERM=xterm-256color
+
+source ~/bin/jdk 1.6
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
