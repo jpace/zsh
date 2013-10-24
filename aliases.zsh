@@ -68,6 +68,7 @@ alias cx='chmod +x'
 alias crw='chmod ag+w -R .'
 
 alias rt='rake test'
+alias rv='rake TESTOPTS="-v"'
 
 alias mt='make tests'
 alias mk='make --no-print-directory'
@@ -96,6 +97,8 @@ alias svndw="svn diff --diff-cmd diff -x -uw"
 
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' \) -print -exec rm -f {} \; }
 fn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
+fnn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
+ec() { emacsclient $* & }
 
 alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
 
