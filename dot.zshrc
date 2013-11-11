@@ -101,3 +101,5 @@ zstyle ':prompt:ganneff' colors true
 # zstyle ':prompt:ganneff:right:setup' use-rprompt false
 
 source ~zshdir/prompt_ganneff_setup
+
+[[ $EMACS = t ]] && unsetopt zle
