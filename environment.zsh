@@ -16,7 +16,7 @@ export ZLS_COLORS=$LS_COLORS
 export IGNOREEOF=2
 
 # default places to look while cd'ing
-export CDPATH=.:~:/proj:..
+export CDPATH=.:..
 
 export HISTFILE=~/.zsh_history
 export SAVEHIST=3000
