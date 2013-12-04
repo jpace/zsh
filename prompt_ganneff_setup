@@ -476,9 +476,9 @@ ${PR_SHIFT_IN}${PR_HBAR}${PR_CYAN}${PR_HBAR}${PR_SHIFT_OUT}${PR_NO_COLOR} '
             _prompt_ganneff_ignore=( '$EDITOR' '$PAGER' sleep man ssh zsh watch less )
         # In case the commands to ignore include variables (say $EDITOR), we want to
         # store them once as variable - and once the variable expanded.
-        for (( i = 1; i <= ${#_prompt_ganneff_ignore}; i++ )) do
-            if (( ${${_prompt_ganneff_ignore[$i]}[(i)$]} <= ${#_prompt_ganneff_ignore[$i]} )); then
-                _prompt_ganneff_ignore+=(${(e)${_prompt_ganneff_ignore[$i]}})
+        for (( _pgidx = 1; _pgidx <= ${#_prompt_ganneff_ignore}; _pgidx++ )) do
+            if (( ${${_prompt_ganneff_ignore[$_pgidx]}[(i)$]} <= ${#_prompt_ganneff_ignore[$_pgidx]} )); then
+                _prompt_ganneff_ignore+=(${(e)${_prompt_ganneff_ignore[$_pgidx]}})
             fi
         done
         add-zsh-hook preexec prompt_ganneff_preexec

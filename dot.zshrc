@@ -92,13 +92,11 @@ if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
 fi
 export TERM=xterm-256color
 
-source ~/bin/jdk 1.6
+source ~/bin/jdk 1.7
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
 zstyle ':prompt:ganneff' colors true
-# I can't get this to work; right prompt is still printed:
-# zstyle ':prompt:ganneff:right:setup' use-rprompt false
 
 source ~zshdir/prompt_ganneff_setup
 
