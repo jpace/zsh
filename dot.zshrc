@@ -94,7 +94,8 @@ export TERM=xterm-256color
 
 source ~/bin/jdk 1.6
 
-PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+# RVM needs to be first in the path
+PATH=~/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
 
 zstyle ':prompt:ganneff' colors true
 # I can't get this to work; right prompt is still printed:
@@ -103,3 +104,6 @@ zstyle ':prompt:ganneff' colors true
 source ~zshdir/prompt_ganneff_setup
 
 [[ $EMACS = t ]] && unsetopt zle
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

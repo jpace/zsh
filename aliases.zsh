@@ -64,6 +64,7 @@ alias sdd='ls -alFd'
 alias lslr='ls -lrta'
 alias sdr='ls -lrta'
 alias sds='ls -lta'
+alias sr='ls -lrta'
 
 alias c='clear'
 alias a='alias'
@@ -77,7 +78,7 @@ alias mt='make tests'
 alias mk='make --no-print-directory'
 
 alias t='cat'
-alias .='ls'
+
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
