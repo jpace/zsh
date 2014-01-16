@@ -21,6 +21,7 @@ hash -d ragol=~incava/ragol
 hash -d riel=~incava/riel
 hash -d svnx=~incava/svnx
 hash -d synoption=~incava/synoption
+hash -d xumoqi=~incava/workspace/xumoqi
 
 hash -d incava.org=~/proj/rails.incava.org
 hash -d incava.rails=~/proj/org/incava/rails

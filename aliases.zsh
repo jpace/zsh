@@ -176,3 +176,5 @@ up() {
     fi
     cd "$dir";
 }
+
+runeclipse=/opt/eclipse/eclipse
