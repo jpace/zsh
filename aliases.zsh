@@ -177,4 +177,4 @@ up() {
     cd "$dir";
 }
 
-runeclipse=/opt/eclipse/eclipse
+alias runeclipse=/opt/eclipse/eclipse
