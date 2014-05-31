@@ -33,6 +33,9 @@ alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
 alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
 
+alias fgra="find . -name '*gradle*' | sort | xargs glark $*"
+alias fv="find . -name '*.groovy' | sort | xargs glark $*"
+
 alias ft="find . -name '*.txt' | sort | xargs glark $*"
 alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | sort | xargs glark $*"
 alias fbx="find . -name 'build*.xml' | sort | xargs glark $*"
