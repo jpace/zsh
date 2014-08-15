@@ -8,7 +8,7 @@ path=(~/bin $path)
 
 setopt promptsubst
 
-fpath=(~/lib/zsh ~/System/Zsh $fpath)
+fpath=(~/lib/zsh ~/.config/zsh $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -64,16 +64,20 @@ case $TERM in
     ;;
 esac
 
-zshdir=~/System/Zsh
+zshdir=~/.config/zsh
 
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
 
 if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]; then
     source ~zshdir/work.zsh
-else if [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]; then
+else if [[ x$HOST = xdubhe ]] || [[ x$HOST = xcanopus ]]; then
     source ~zshdir/home.zsh
 fi
+fi
+
+if [[ -e ~zshdir/$HOST.zsh ]]; then
+    source ~zshdir/$HOST.zsh
 fi
 
 setopt extendedglob

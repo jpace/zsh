@@ -116,7 +116,7 @@ scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.ba
 # Find matching names, not going into .svn directories.
 fn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 fnn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
-ec() { emacsclient $* & }
+ec() { emacsclient --no-wait $* & }
 
 alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
 
