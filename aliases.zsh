@@ -23,8 +23,6 @@ fx () {
     ff | xargs glark $*
 }
 
-# alias f='find . \( \( -name .svn -o -name .git \) -prune \) -o -name '
-
 f () {
     find . \( \( -name .svn -o -name .git \) -prune \) -o -name $* -print
 }
@@ -90,10 +88,16 @@ alias dv='dirs -v'
 alias grep='glark --grep'
 
 alias -g XA=' | xargs'
-alias -g XI=' | xargs -I '
+alias -g XI=' | xargs -I'
+alias -g X0=' | xargs -0'
+alias -g XL=' | xargs ls -l'
+alias -g XLS=' | xargs ls -lrta'
 
 alias -g G='| glark'
 alias -g XG='| xargs glark'
+
+alias -g GG='| grep -3'
+alias -g XGG='| xargs grep -3'
 
 alias -g S='| sort'
 alias -g SN='| sort -n'
@@ -106,14 +110,15 @@ alias -g T='| tail'
 alias syncp4='p4 sync ...'
 alias peekp4='p4 sync -n ...'
 
-alias svndw="svn diff --diff-cmd diff -x -uw"
-
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
-# Find matching names, not going into .svn directories.
-fn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
-fnn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
-ec() { emacsclient $* & }
+fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
+fn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
+fnj() { find . \( -name .svn -prune \) -o -name \*$*\*.java -print | sort }
+fnJ() { find . \( -name .svn -prune \) -o -name \*$*\*.jar -print | sort }
+fnz() { find . \( -name .svn -prune \) -o -name \*$*\*.zip -print | sort }
+
+ec() { for i in $*; do emacsclient --no-wait $i; done }
 
 alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
 
@@ -121,13 +126,7 @@ alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'
 
-# Subversion
-alias sl='svn log -l 5'
-alias sl15='svn log -l 15'
-alias sdfj='svn diff --diff-cmd mockdiff'
-alias sfcommit='svn commit -F /tmp/svncomment.txt '
-alias svd='svn diff '
-alias sdff='svn diff --diff-cmd diff -x -bwB '
+source ~zshdir/svn.zsh
 
 # Gradle
 alias gct='gradle clean test'
@@ -178,3 +177,11 @@ up() {
 }
 
 alias runeclipse=/opt/eclipse/eclipse
+
+# todo:
+
+# uberaliases:
+# ee: eye: if dir, list (formerly sd), process files by type (jar, tar.gz, zip, image), i.e., shw
+# xx: extract
+# vv: verbose eye: if compressed files, extract (to stdout), for grepping
+# oo: open: same as ec now
