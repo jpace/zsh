@@ -1,5 +1,3 @@
-# hash -d downloads=~/downloads
-
 hash -d incava=/proj/org/incava
 
 hash -d doctorj=~incava/doctorj
