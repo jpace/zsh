@@ -501,7 +501,7 @@ prompt_ganneff_precmd () {
     # left_items=(ulcorner line openparantheses user at host colon pts closeparantheses line history
     #     line shell-level line flexline openparenthesis path closeparenthesis line urcorner newline
     #     llcorner line rc openparenthesis time closeparenthesis line vcs line change-root pipe space)
-    left_items=(openparenthesis path closeparenthesis llcorner line vcs line openparenthesis rc-status closeparenthesis percent)
+    left_items=(openparenthesis path closeparenthesis llcorner line vcs line history openparenthesis rc-status closeparenthesis percent)
     PR_PS1=""; nomore=0
     ganneff_prompt_addto PS1 full "${left_items[@]}"
     if zstyle -T ":prompt:ganneff:right:setup" use-rprompt; then
