@@ -1,4 +1,4 @@
-# z shell rc
+# .zshrc
 # -*- sh -*-
 
 # search path for the cd command
