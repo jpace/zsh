@@ -24,9 +24,6 @@ hash -d xumoqi=~incava/workspace/xumoqi
 hash -d incava.org=~/proj/rails.incava.org
 hash -d incava.rails=~/proj/org/incava/rails
 
-export ANT_HOME=/usr/share/apache-ant-1.8.2
-export SCALA_HOME=/Programs/org/scala/scala-2.10.0
-
 export JAVA_COMPILER=NONE
 
 # standard stuff:
