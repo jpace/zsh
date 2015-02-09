@@ -98,9 +98,6 @@ export TERM=xterm-256color
 
 source ~/bin/jdk 1.7
 
-# RVM needs to be first in the path
-PATH=~/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
-
 zstyle ':prompt:ganneff' colors true
 
 source ~zshdir/prompt_ganneff_setup

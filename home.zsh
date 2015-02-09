@@ -38,4 +38,4 @@ export CLASSPATH=$CLASSPATH:/usr/java/lib/junit.jar
 export ANT_HOME=/usr/share/apache-ant-1.8.2
 export GRADLE_HOME=/opt/gradle-1.12
 export SCALA_HOME=/Programs/org/scala/scala-2.10.0
-export PATH=/home/jpace/.rvm/gems/ruby-2.0.0-p247/bin:$JAVA_HOME/bin:$SCALA_HOME/bin:$GRADLE_HOME/bin:$PATH:.:$ANT_HOME/bin
+export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$GRADLE_HOME/bin:$PATH:.:$ANT_HOME/bin
