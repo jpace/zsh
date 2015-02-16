@@ -107,4 +107,8 @@ source ~zshdir/prompt_ganneff_setup
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
+# This line must be last; restore it as last if/when adding Heroku, which adds its line as the last
+# one. Also note that RVM writes to ~/.zshrc -- it does not follow the link, which I have to
+# ~/.config/zsh/dot.zshrc
+
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
