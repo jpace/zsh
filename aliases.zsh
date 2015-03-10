@@ -23,11 +23,7 @@ fx () {
     ff | xargs glark $*
 }
 
-# alias f='find . \( \( -name .svn -o -name .git \) -prune \) -o -name '
-
-f () {
-    find . \( \( -name .svn -o -name .git \) -prune \) -o -name $* -print
-}
+# f, fj, etc., are being made obsolete by aforalias
 
 alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"

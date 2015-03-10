@@ -25,6 +25,7 @@ hash -d incava.org=~/proj/rails.incava.org
 hash -d incava.rails=~/proj/org/incava/rails
 
 hash -d railtut=~incava/rails/tutorial
+hash -d rtsapp=~railtut/it0/sample_app
 
 export JAVA_COMPILER=NONE
 
