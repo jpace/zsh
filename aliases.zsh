@@ -103,6 +103,8 @@ alias -g M='| more'
 alias -g H='| head'
 alias -g T='| tail'
 
+alias -g LN='| awk "{print FNR \" \" \$0 }"'
+
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
 fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
@@ -164,7 +166,7 @@ up() {
             x=$(($x+1))
         done
     else
-        dir=${PWD%/$1/*}/$1
+        dir=${PWD%/$1*/*}/$1*
     fi
     cd "$dir";
 }
@@ -178,3 +180,30 @@ alias runeclipse=/opt/eclipse/eclipse
 # xx: extract
 # vv: verbose eye: if compressed files, extract (to stdout), for grepping
 # oo: open: same as ec now
+
+# see http://www.focusonzsh.org/2015/08/caching-command-output.html
+alias -g TA='| tee /tmp/cmdoutput | perl -pe "printf q{%4d }, $."' 
+ta() { 
+    arg=$1
+    if [ -z "$arg" ]
+    then
+	tail -1 /tmp/cmdoutput
+    else
+	a=(${(s.:.)arg})
+	first=$a[1]
+	second=$a[2]
+	if [ -z $second ]
+	then
+	    tail -n +$first /tmp/cmdoutput | head -1
+	elif [[ $second[1] = "-" ]]
+	then
+	    cmd="{print \$(NF + 1 + $second)}"
+	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
+	else
+	    cmd="{print \$$second}"
+	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
+	fi
+    fi
+}
+
+alias psjava='ps auxw | grep java'
