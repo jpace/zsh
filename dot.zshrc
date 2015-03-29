@@ -4,7 +4,7 @@
 # search path for the cd command
 cdpath=(~ ..)
 
-path=(~/bin $path)
+path=(~/bin ~/bin/svn $path)
 
 setopt promptsubst
 
@@ -69,17 +69,21 @@ zshdir=~/System/Zsh
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
 
-if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]; then
+if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]
+then
     source ~zshdir/work.zsh
-else if [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]; then
+elif [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]
+then
     source ~zshdir/home.zsh
 fi
-fi
+
+source ~zshdir/pvn.zsh
 
 setopt extendedglob
 
 # Make home go to the beginning of the line; end to the end, etc.
-if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
+if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]
+then
        export TERM='xterm-color'
        bindkey "\e[1~" beginning-of-line
        bindkey "\e[3~" delete-char 
@@ -105,3 +109,15 @@ source ~zshdir/prompt_ganneff_setup
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# when logging in via Putty:
+if [[ $LC_CONNFROM = "one" ]]
+then
+    cd ~isdev
+elif [[ $LC_CONNFROM = "two" ]]
+then
+    cd tmp; emacs -nw
+elif [[ $LC_CONNFROM = "three" ]]
+then
+    cd ~isdev
+fi
