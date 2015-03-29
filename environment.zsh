@@ -9,7 +9,7 @@ export HISTCONTROL=ignoredups
 
 export LD_LIBRARY_PATH=/usr/local/lib:.
 
-eval `dircolors ~/.dircolorsrc`
+# eval `dircolors ~/.dircolorsrc`
 export ZLS_COLORS=$LS_COLORS
 
 # need 2 ctrl-D's to quit

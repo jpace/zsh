@@ -1,0 +1,3 @@
+[submodule "aforalias"]
+	path = aforalias
+	url = https://github.com/jpace/aforalias.git

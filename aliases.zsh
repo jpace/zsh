@@ -27,6 +27,9 @@ alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
 alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
 
+alias fgra="find . -name '*gradle*' | sort | xargs glark $*"
+alias fv="find . -name '*.groovy' | sort | xargs glark $*"
+
 alias ft="find . -name '*.txt' | sort | xargs glark $*"
 alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | sort | xargs glark $*"
 alias fbx="find . -name 'build*.xml' | sort | xargs glark $*"
@@ -107,12 +110,9 @@ alias -g LN='| awk "{print FNR \" \" \$0 }"'
 
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
-fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
+# Find matching names, not going into .svn directories.
 fn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
-fnj() { find . \( -name .svn -prune \) -o -name \*$*\*.java -print | sort }
-fnJ() { find . \( -name .svn -prune \) -o -name \*$*\*.jar -print | sort }
-fnz() { find . \( -name .svn -prune \) -o -name \*$*\*.zip -print | sort }
-
+fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 ec() { for i in $*; do emacsclient --no-wait $i; done }
 
 alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
