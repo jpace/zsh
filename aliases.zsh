@@ -23,10 +23,6 @@ fx () {
     ff | xargs glark $*
 }
 
-f () {
-    find . \( \( -name .svn -o -name .git \) -prune \) -o -name $* -print
-}
-
 alias fj="find . -name '*.java' | sort | xargs glark $*"
 alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
 alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
@@ -106,9 +102,6 @@ alias -g L='| less'
 alias -g M='| more'
 alias -g H='| head'
 alias -g T='| tail'
-
-alias syncp4='p4 sync ...'
-alias peekp4='p4 sync -n ...'
 
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
