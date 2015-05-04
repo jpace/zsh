@@ -68,6 +68,7 @@ zshdir=~/.config/zsh
 
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
+source ~zshdir/files.zsh
 
 if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]; then
     source ~zshdir/work.zsh
@@ -112,14 +113,3 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # ~/.config/zsh/dot.zshrc
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-# take from http://chneukirchen.org/dotfiles/.zshrc
-imv() {
-  local src dst
-  for src; do
-    [[ -e $src ]] || { print -u2 "$src does not exist"; continue }
-    dst=$src
-    vared dst
-    [[ $src != $dst ]] && mkdir -p $dst:h && mv -n $src $dst
-  done
-}
