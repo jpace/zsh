@@ -121,7 +121,10 @@ alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'
 
-source ~zshdir/svn.zsh
+if [[ -e ~zshdir/svn.zsh ]]
+then
+    source ~zshdir/svn.zsh
+fi
 
 # Gradle
 alias gct='gradle clean test'
@@ -182,7 +185,7 @@ alias runeclipse=/opt/eclipse/eclipse
 # oo: open: same as ec now
 
 # see http://www.focusonzsh.org/2015/08/caching-command-output.html
-alias -g TA='| tee /tmp/cmdoutput | perl -pe "printf q{%4d }, $."' 
+alias -g TA='| tee /tmp/cmdoutput | cat -n' 
 ta() { 
     arg=$1
     if [ -z "$arg" ]
