@@ -64,7 +64,7 @@ case $TERM in
     ;;
 esac
 
-zshdir=~/System/Zsh
+zshdir=~/.config/zsh
 
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
@@ -72,12 +72,15 @@ source ~zshdir/environment.zsh
 if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]
 then
     source ~zshdir/work.zsh
-elif [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]
+elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]] && [ -e ~zshdir/home.zsh ]
 then
     source ~zshdir/home.zsh
 fi
 
-source ~zshdir/pvn.zsh
+if [[ -e ~zshdir/pvn.zsh ]]
+then
+    source ~zshdir/pvn.zsh
+fi
 
 setopt extendedglob
 
