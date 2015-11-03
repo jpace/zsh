@@ -4,23 +4,24 @@ alias -g TA='| tee /tmp/cmdoutput | cat -n'
 
 ta() { 
     arg=$1
+    cmdout=/tmp/cmdoutput
     if [ -z "$arg" ]
     then
-	tail -1 /tmp/cmdoutput
+	tail -1 $cmdout
     else
 	a=(${(s.:.)arg})
 	first=$a[1]
 	second=$a[2]
 	if [ -z $second ]
 	then
-	    tail -n +$first /tmp/cmdoutput | head -1
+	    tail -n +$first $cmdout | head -1
 	elif [[ $second[1] = "-" ]]
 	then
 	    cmd="{print \$(NF + 1 + $second)}"
-	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
+	    tail -n +$first $cmdout | head -1 | awk "$cmd"
 	else
 	    cmd="{print \$$second}"
-	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
+	    tail -n +$first $cmdout | head -1 | awk "$cmd"
 	fi
     fi
 }
