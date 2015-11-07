@@ -4,48 +4,7 @@
 # find shortcuts
 # f() { find . -name $* | sort }
 
-ff () {
-    local re
-    
-    if [[ -e 'Rakefile' ]]; then
-	re='.*.rb$'
-    elif [[ -e 'build.xml' || -e 'build.gradle' ]]; then
-	re='.*.java$'
-    elif [[ -e 'config.ru' ]]; then
-	re='.*.e?rb$'
-    else
-	re='.*'
-    fi
-    find . -regex ${re} | sort
-}
-
-fx () {
-    ff | xargs glark $*
-}
-
-alias fj="find . -name '*.java' | sort | xargs glark $*"
-alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
-alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
-
-alias fgra="find . -name '*gradle*' | sort | xargs glark $*"
-alias fv="find . -name '*.groovy' | sort | xargs glark $*"
-
-alias ft="find . -name '*.txt' | sort | xargs glark $*"
-alias fr="find . \( -name pkg -prune \) -o \( -name '*.*rb' -print \) | sort | xargs glark $*"
-alias fbx="find . -name 'build*.xml' | sort | xargs glark $*"
-alias fxml="find . -name '*.xml' | sort | xargs glark $*"
-
-alias frlib="find lib -name '*.rb' | sort | xargs glark $*"
-alias frtest="find test -name '*.rb' | sort | xargs glark $*"
-alias frtu="find test/unit -name '*.rb' | sort | xargs glark $*"
-alias frti="find test/integration -name '*.rb' | sort | xargs glark $*"
-
-# C++ files
-alias fc="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark $*"
-alias fcm="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc' -o -name '*.y' -o -name '*.l' \) | xargs glark -M $*"
-alias fcco="find . \( -name '*.h' -o -name '*.cpp' \) -perm -600"
-
-alias fall="find . \( \( -name .svn -o -name .git \) -prune \) -o -type f -print0 | xargs -0 glark $*"
+source_if_exists "find"
 
 alias h='history -5000'
 alias hg="history -5000 | egrep $*"
@@ -76,13 +35,7 @@ alias mk='make --no-print-directory'
 
 alias t='cat'
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
-alias pd='push d'
-alias ret='popd'
-alias dv='dirs -v'
+source_if_exists "dirs"
 
 alias grep='glark --grep'
 
@@ -115,16 +68,13 @@ fn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
 fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 ec() { for i in $*; do emacsclient --no-wait $i; done }
 
-alias terms='gnome-terminal --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
+alias terms='konsole --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
 
 alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'
 
-if [[ -e ~zshdir/svn.zsh ]]
-then
-    source ~zshdir/svn.zsh
-fi
+source_if_exists "svn"
 
 # Gradle
 alias gct='gradle clean test'
@@ -134,15 +84,7 @@ alias gt='gradle test'
 
 gst() { gradle test -Dtest.single=$* }
 
-# Git
-alias gitdfs='git diff --stat HEAD'
-alias gitst='git status'
-
-alias gitpullall='git pull origin master; git submodule foreach git pull origin master'
-alias gitpushall='git push -u origin master; git submodule foreach git push -u origin master'
-alias gpa='gitpushall'
-alias gpull='gitpullall'
-alias gpom='git push -u origin master'
+source_if_exists "git"
 
 # Rake
 alias rtu='rake test'
@@ -151,8 +93,6 @@ alias rt='ruby -Itest -Itest/unit -Ilib'
 
 alias rt19='ruby1.9.1 -Itest -Itest/unit -Ilib'
 alias rake19='rake1.9.1'
-
-md() { mkdir $* && cd $* }
 
 gldeep() { glark $* *(.) */*(.) */*/*(.) */*/*/*(.) }
 
@@ -184,29 +124,6 @@ alias runeclipse=/opt/eclipse/eclipse
 # vv: verbose eye: if compressed files, extract (to stdout), for grepping
 # oo: open: same as ec now
 
-# see http://www.focusonzsh.org/2015/08/caching-command-output.html
-alias -g TA='| tee /tmp/cmdoutput | cat -n' 
-ta() { 
-    arg=$1
-    if [ -z "$arg" ]
-    then
-	tail -1 /tmp/cmdoutput
-    else
-	a=(${(s.:.)arg})
-	first=$a[1]
-	second=$a[2]
-	if [ -z $second ]
-	then
-	    tail -n +$first /tmp/cmdoutput | head -1
-	elif [[ $second[1] = "-" ]]
-	then
-	    cmd="{print \$(NF + 1 + $second)}"
-	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
-	else
-	    cmd="{print \$$second}"
-	    tail -n +$first /tmp/cmdoutput | head -1 | awk "$cmd"
-	fi
-    fi
-}
+source_if_exists "ta"
 
 alias psjava='ps auxw | grep java'
