@@ -64,7 +64,18 @@ case $TERM in
     ;;
 esac
 
-zshdir=~/System/Zsh
+source_if_exists() {
+    echo "seeking $1 ..."
+    if [[ -e ~zshdir/$1.zsh ]]
+    then
+	echo "found $1 ..."
+	source ~zshdir/$1.zsh
+    else
+	echo "didn't find $1 ..."
+    fi
+}
+
+zshdir=~/.config/zsh
 
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
@@ -72,12 +83,13 @@ source ~zshdir/environment.zsh
 if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]
 then
     source ~zshdir/work.zsh
-elif [[ x$HOST = xcanopus ]] && [[ -e ~zshdir/home.zsh ]]
+elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]] && [ -e ~zshdir/home.zsh ]
 then
     source ~zshdir/home.zsh
 fi
 
-source ~zshdir/pvn.zsh
+source_if_exists "pvn"
+source_if_exists "help"
 
 setopt extendedglob
 
