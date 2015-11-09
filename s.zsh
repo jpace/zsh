@@ -40,9 +40,9 @@ beseekfiles() {
 
 s() {
     grp=$((which glark >/dev/null) && echo "glark" || echo "grep")
-    for xx in "$@"; do echo xx: $xx; done
-
+    for xx in "$@"; do echo xx: $xx :xx; done
     for final in $@; do :; done
+
     if [[ -f $final || -d $final ]]
     then
 	echo "running grep, since $final found as file or directory"
@@ -69,7 +69,8 @@ s() {
 		    f "java" | xargs $grp $*
 		elif [ -f "Rakefile" ]
 		then
-		    f "rb" | xargs $grep $*
+		    echo "rakefile exists"
+		    f "rb" | xargs $grp $*
 		else
 		    echo "not handled: $1"
 		fi

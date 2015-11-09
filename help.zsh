@@ -6,5 +6,5 @@ autoload run-help-sudo
 # So git log <alt-h> shows "man git log", not "man git":
 autoload run-help-git
 
-# So svn merge <alt-h> shows "man svn merge", not "man svn":
+# So svn merge <alt-h> shows "svn help merge", not "man svn":
 autoload run-help-svn
