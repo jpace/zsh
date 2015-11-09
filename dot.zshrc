@@ -111,7 +111,7 @@ then
 fi
 export TERM=xterm-256color
 
-source ~/bin/jdk 1.7
+source ~/bin/jdk 1.8
 
 # RVM needs to be first in the path
 PATH=~/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
@@ -128,11 +128,11 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # when logging in via Putty:
 if [[ $LC_CONNFROM = "one" ]]
 then
-    cd ~isdev
+    cd ~isbr/dev4
 elif [[ $LC_CONNFROM = "two" ]]
 then
     cd tmp; emacs -nw
 elif [[ $LC_CONNFROM = "three" ]]
 then
-    cd ~isdev
+    cd ~isbr/dev4
 fi
