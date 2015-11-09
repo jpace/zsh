@@ -8,7 +8,7 @@ path=(~/bin ~/bin/svn $path)
 
 setopt promptsubst
 
-fpath=(~/lib/zsh ~/.config/zsh $fpath)
+fpath=(~/lib/zsh ~/System/Zsh $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -64,26 +64,38 @@ case $TERM in
     ;;
 esac
 
+source_if_exists() {
+    echo "seeking $1 ..."
+    if [[ -e ~zshdir/$1.zsh ]]
+    then
+	echo "found $1 ..."
+	source ~zshdir/$1.zsh
+    else
+	echo "didn't find $1 ..."
+    fi
+}
+
 zshdir=~/.config/zsh
 
 source ~zshdir/aliases.zsh
 source ~zshdir/environment.zsh
 
-if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]; then
+if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]
+then
     source ~zshdir/work.zsh
-else if [[ x$HOST = xdubhe ]] || [[ x$HOST = xcanopus ]]; then
+elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]] && [ -e ~zshdir/home.zsh ]
+then
     source ~zshdir/home.zsh
 fi
-fi
 
-if [[ -e ~zshdir/$HOST.zsh ]]; then
-    source ~zshdir/$HOST.zsh
-fi
+source_if_exists "pvn"
+source_if_exists "help"
 
 setopt extendedglob
 
 # Make home go to the beginning of the line; end to the end, etc.
-if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]; then
+if [[ $TERM = "xterm" || $TERM = "xterm-color" ]]
+then
        export TERM='xterm-color'
        bindkey "\e[1~" beginning-of-line
        bindkey "\e[3~" delete-char 
@@ -109,3 +121,15 @@ source ~zshdir/prompt_ganneff_setup
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+# when logging in via Putty:
+if [[ $LC_CONNFROM = "one" ]]
+then
+    cd ~isdev
+elif [[ $LC_CONNFROM = "two" ]]
+then
+    cd tmp; emacs -nw
+elif [[ $LC_CONNFROM = "three" ]]
+then
+    cd ~isdev
+fi

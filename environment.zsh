@@ -22,6 +22,7 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=3000
 export HISTSIZE=1000
 
+setopt APPEND_HISTORY
 setopt HISTIGNOREDUPS
 setopt IGNORE_EOF
 setopt APPEND_HISTORY
