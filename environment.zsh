@@ -24,6 +24,7 @@ export HISTSIZE=1000
 
 setopt HISTIGNOREDUPS
 setopt IGNORE_EOF
+setopt APPEND_HISTORY
 
 export NPX_PLUGIN_PATH=$JAVA_HOME/jre/bin
 
