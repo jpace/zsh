@@ -39,12 +39,10 @@ beseekfiles() {
 }
 
 s() {
-    echo "THIS is s"
     grp=$((which glark >/dev/null) && echo "glark" || echo "grep")
     for xx in "$@"; do echo xx: $xx; done
 
     for final in $@; do :; done
-    echo "FINAL: $final"
     if [[ -f $final || -d $final ]]
     then
 	echo "running grep, since $final found as file or directory"

@@ -77,15 +77,15 @@ source_if_exists() {
 
 zshdir=~/.config/zsh
 
-source ~zshdir/aliases.zsh
-source ~zshdir/environment.zsh
+source_if_exists "aliases"
+source_if_exists "environment"
 
-if [[ x$HOST = xeddie ]] && [ -e ~zshdir/work.zsh ]
+if [[ x$HOST = xeddie ]]
 then
-    source ~zshdir/work.zsh
-elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]] && [ -e ~zshdir/home.zsh ]
+    source_if_exists "work"
+elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]]
 then
-    source ~zshdir/home.zsh
+    source_if_exists "home"
 fi
 
 source_if_exists "pvn"
