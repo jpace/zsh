@@ -35,8 +35,6 @@ PROMPT3='+ '
 # just the time
 RPROMPT="$(git_branch)%*"
 
-# PROMPT=$'%B%~%b$(prompt_char)%# '
-
 # get the name of the branch we are on
 git_prompt_info() { 
     git branch | awk '/^\*/ { print $2 }'
