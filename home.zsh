@@ -23,6 +23,7 @@ hash -d svnx=~incava/svnx
 hash -d synoption=~incava/synoption
 hash -d xumoqi=~incava/workspace/xumoqi
 hash -d whake=~incava/whake
+hash -d cnb=~incava/cnb
 
 hash -d incava.org=~/proj/rails.incava.org
 hash -d incava.rails=~/proj/org/incava/rails

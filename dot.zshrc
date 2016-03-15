@@ -32,10 +32,7 @@ PROMPT3='+ '
 # cool, but hard to get used to:
 # RPROMPT="%~ %m %*"
 
-# just the time
 RPROMPT="$(git_branch)%*"
-
-# PROMPT=$'%B%~%b$(prompt_char)%# '
 
 # get the name of the branch we are on
 git_prompt_info() { 
@@ -137,3 +134,7 @@ elif [[ $LC_CONNFROM = "three" ]]
 then
     cd ~isbr/dev4
 fi
+
+# Use Ruby 2.0 by default
+source ~/.rvm/scripts/rvm
+rvm use 2.0
