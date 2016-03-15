@@ -2,3 +2,4 @@
 # -*- sh -*-
 
 alias jmpk='jarmanpeek'
+alias j7='source 

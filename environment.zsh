@@ -34,3 +34,6 @@ export LESSOPEN="|lesspipe.sh %s"
 export GROOVY_HOME=/usr/share/groovy
 export CLASSPATH_EXTRA_JARS=/usr/java/lib/tools.jar:~/Files/org-incava-ijdk-1.0.1.jar
 export TZ="US/Eastern"
+
+# omit '/' from chars; thus ctrl-w kills back to next element if at the end of a path
+export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'

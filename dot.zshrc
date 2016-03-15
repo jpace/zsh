@@ -8,7 +8,7 @@ path=(~/bin ~/bin/svn $path)
 
 setopt promptsubst
 
-fpath=(~/lib/zsh ~/System/Zsh $fpath)
+fpath=(~/lib/zsh ~/.config/zsh $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -89,6 +89,7 @@ then
 fi
 
 source_if_exists "pvn"
+source_if_exists "emacs"
 source_if_exists "help"
 source_if_exists "e"
 source_if_exists "o"
