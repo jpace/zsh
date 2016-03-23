@@ -4,7 +4,7 @@
 # search path for the cd command
 cdpath=(~ ..)
 
-path=(~/bin ~/bin/svn $path)
+path=(~/bin ~/bin/svn ~/bin/java $path)
 
 setopt promptsubst
 
