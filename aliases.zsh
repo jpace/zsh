@@ -7,7 +7,7 @@
 source_if_exists "find"
 
 alias h='history -5000'
-alias hg="history -5000 | egrep "
+alias hg='history -5000 | egrep'
 
 alias zap='rm -i'
 
@@ -53,7 +53,8 @@ alias -g XG='| xargs grep'
 alias -g S='| sort'
 alias -g SN='| sort -n'
 
-alias -g L='| less'
+# -R: display ANSI colors, not escaped codes:
+alias -g L='| less -R'
 alias -g M='| more'
 alias -g H='| head'
 alias -g T='| tail'
