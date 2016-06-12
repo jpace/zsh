@@ -18,3 +18,9 @@ imv() {
         fi
     done
 }
+
+# from http://chneukirchen.org/dotfiles/.zshrc
+# displays the full path of the file, or pwd if nothing specified
+path() {
+  print -l ${${@:-$PWD}:a}
+}
