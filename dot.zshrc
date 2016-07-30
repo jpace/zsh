@@ -138,3 +138,5 @@ fi
 # Use Ruby 2.0 by default
 source ~/.rvm/scripts/rvm
 rvm use 2.0
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
