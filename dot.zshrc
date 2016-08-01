@@ -76,6 +76,7 @@ zshdir=~/.config/zsh
 
 source_if_exists "aliases"
 source_if_exists "environment"
+source_if_exists "java"
 
 if [[ x$HOST = xeddie ]]
 then
@@ -91,6 +92,7 @@ source_if_exists "help"
 source_if_exists "e"
 source_if_exists "o"
 source_if_exists "s"
+source_if_exists "svn"
 
 setopt extendedglob
 

@@ -11,3 +11,4 @@ alias svndw="svn diff --diff-cmd diff -x -uw"
 alias sb-'svn blame -r HEAD'
 
 alias svnci='svncommit /tmp/cmt'
+alias smi='svn propget svn:mergeinfo'
