@@ -68,22 +68,12 @@ fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 
 ec() { for i in $*; do emacsclient --no-wait $i; done }
 
-alias terms='konsole --geometry 175x75+5+5 --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark --tab-with-profile=dark'
-
 alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'
 
 source_if_exists "svn"
-
-# Gradle
-alias gct='gradle clean test'
-alias gr='gradle '
-alias gb='gradle build'
-alias gt='gradle test'
-
-gst() { gradle test -Dtest.single=$* }
-
+source_if_exists "gradle"
 source_if_exists "git"
 
 # Rake
