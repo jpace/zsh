@@ -5,3 +5,10 @@ cde () {
                                (window-buffer (selected-window))
                                default-directory) ')}
 }
+
+# create a java test for the current java source file
+otest() {
+    f=${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) buffer-file-name)' )}
+    o $f:h:gs/main/test//Test$f:t
+}
+
