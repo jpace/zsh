@@ -89,9 +89,9 @@ fi
 source_if_exists "pvn"
 source_if_exists "emacs"
 source_if_exists "help"
-source_if_exists "e"
-source_if_exists "o"
-source_if_exists "s"
+# source_if_exists "e"
+# source_if_exists "o"
+# source_if_exists "s"
 source_if_exists "svn"
 
 setopt extendedglob
