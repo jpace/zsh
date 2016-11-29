@@ -66,8 +66,6 @@ scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.ba
 fn() { find . \( -name .svn -prune \) -o -name \*$*\* -print | sort }
 fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 
-ec() { for i in $*; do emacsclient --no-wait $i; done }
-
 alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'

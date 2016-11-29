@@ -8,7 +8,9 @@ path=(~/bin ~/bin/svn ~/bin/java $path)
 
 setopt promptsubst
 
-fpath=(~/lib/zsh ~/.config/zsh $fpath)
+hash -d zshdir=/opt/org/incava/zsh
+
+fpath=(~/lib/zsh ~zshdir $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -65,14 +67,12 @@ source_if_exists() {
     echo "seeking $1 ..."
     if [[ -e ~zshdir/$1.zsh ]]
     then
-	echo "found $1 ..."
-	source ~zshdir/$1.zsh
+	    echo "found $1 ..."
+	    source ~zshdir/$1.zsh
     else
-	echo "didn't find $1 ..."
+	    echo "didn't find $1 ..."
     fi
 }
-
-zshdir=~/.config/zsh
 
 source_if_exists "aliases"
 source_if_exists "environment"
