@@ -1,3 +1,5 @@
+# -*- sh -*-
+
 alias gct='gradle clean test'
 alias gr='gradle '
 alias gb='gradle build'

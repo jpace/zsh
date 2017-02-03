@@ -1,5 +1,5 @@
 #!/usr/bin/zsh
-# -*- sh -*-
+# -*- sh-mode -*-
 
 # the current file in Emacs:
 ecf() {
@@ -30,4 +30,9 @@ ec() {
     do
         emacsclient --no-wait $i
     done
+}
+
+ecn() {
+    ffn=${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) buffer-file-name) ')}
+    echo $ffn:t:r
 }
