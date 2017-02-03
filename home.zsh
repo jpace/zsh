@@ -13,6 +13,7 @@ hash -d ijdksrc=~ijdk/src/main/java/org/incava/ijdk
 hash -d ijdktst=~ijdk/src/test/java/org/incava/ijdk
 
 hash -d cnb=~incava/cnb
+hash -d cnb1=~incava/cnb1
 hash -d glark=~incava/glark
 hash -d jagol=~incava/jagol
 hash -d joda=~incava/joda-schedule
