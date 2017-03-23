@@ -33,6 +33,8 @@ hash -d incava.rails=~/proj/org/incava/rails
 hash -d railtut=~incava/rails/tutorial
 hash -d rtsapp=~railtut/it0/sample_app
 
+hash -d sown=~sag/is/sown
+
 export JAVA_COMPILER=NONE
 
 # standard stuff:
@@ -45,3 +47,4 @@ export ANT_HOME=/usr/share/apache-ant-1.8.2
 export GRADLE_HOME=/opt/gradle-1.12
 export SCALA_HOME=/Programs/org/scala/scala-2.10.0
 export PATH=$JAVA_HOME/bin:$SCALA_HOME/bin:$GRADLE_HOME/bin:$PATH:.:$ANT_HOME/bin
+
