@@ -30,8 +30,6 @@ alias crw='chmod ag+w -R .'
 alias mt='make tests'
 alias mk='make --no-print-directory'
 
-alias t='cat'
-
 source_if_exists "dirs"
 
 alias grep='glark --grep'
