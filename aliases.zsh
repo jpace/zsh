@@ -68,27 +68,7 @@ alias rj='java_reformat.rb'
 source_if_exists "svn"
 source_if_exists "gradle"
 source_if_exists "git"
-
-# Rake
-alias rtu='rake test'
-alias rti='rake test:integration'
-alias rt='ruby -Itest -Itest/unit -Ilib'
-# run the latest test
-rtl() { f=`echo test/**/*_test.rb(om[1])`; echo file: $f; rt $f }
-# run the test for the current file (poor man's guard)
-rtc() {
-    f=`ecf`
-    echo file: $f
-    t=$f:gs/lib/test\/unit/
-    echo $t
-    r=${t:gs/_test//:t:r}_test.rb
-    p=$t:h/$r
-    echo $p
-    rt $p
-}
-
-alias rt19='ruby1.9.1 -Itest -Itest/unit -Ilib'
-alias rake19='rake1.9.1'
+source_if_exists "ruby"
 
 alias runeclipse=/opt/eclipse/eclipse
 
