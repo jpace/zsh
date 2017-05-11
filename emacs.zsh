@@ -36,3 +36,6 @@ ecn() {
     ffn=${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) buffer-file-name) ')}
     echo $ffn:t:r
 }
+
+# currently open file in Emacs:
+alias -g E='`ecf`'

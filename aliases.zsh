@@ -55,6 +55,11 @@ alias -g H='| head'
 alias -g T='| tail'
 alias -g LN='| awk "{print FNR \" \" \$0 }"'
 
+# most recent directory and file
+
+alias -g D='*(/om[1])'
+alias -g F='*(.om[1])'
+
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
 # Find matching names, not going into .svn directories.
