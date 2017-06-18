@@ -38,7 +38,7 @@ hash -d sown=~sag/is/sown
 export JAVA_COMPILER=NONE
 
 # standard stuff:
-export CLASSPATH=/usr/java/jre/lib:/usr/java/lib:.:~/lib/java
+# export CLASSPATH=/usr/java/jre/lib:/usr/java/lib:.:~/lib/java
 
 # for JUnit:
 export CLASSPATH=$CLASSPATH:/usr/java/lib/junit.jar

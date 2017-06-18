@@ -98,6 +98,8 @@ source_if_exists "help"
 # source_if_exists "o"
 # source_if_exists "s"
 source_if_exists "svn"
+source_if_exists "pwd"
+source_if_exists "gradle"
 
 setopt extendedglob
 
@@ -117,9 +119,6 @@ fi
 export TERM=xterm-256color
 
 source ~/bin/jdk 1.8
-
-# RVM needs to be first in the path
-PATH=~/.rvm/gems/ruby-2.0.0-p247/bin:$PATH
 
 zstyle ':prompt:ganneff' colors true
 
@@ -142,9 +141,8 @@ then
     cd ~isbr/dev4
 fi
 
-# Use Ruby 2.0 by default
 source ~/.rvm/scripts/rvm
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-rvm use 2.2
+rvm use 2.3
