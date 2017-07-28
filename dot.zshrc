@@ -88,6 +88,7 @@ then
     source_if_exists "work"
 elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]]
 then
+    source_if_exists "dubhe"
     source_if_exists "home"
 fi
 
