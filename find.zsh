@@ -20,9 +20,9 @@ fx () {
     ff | xargs glark $*
 }
 
-alias fj="find . -name '*.java' | sort | xargs glark $*"
-alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
-alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
+# alias fj="find . -name '*.java' | sort | xargs glark $*"
+# alias fjsrc="find src/main/java -name '*.java' | sort | xargs glark $*"
+# alias fjtst="find src/test/java -name '*.java' | sort | xargs glark $*"
 
 alias fgra="find . -name '*gradle*' | sort | xargs glark $*"
 alias fv="find . -name '*.groovy' | sort | xargs glark $*"
@@ -43,3 +43,7 @@ alias fcm="find . \( -name '*.h' -o -name '*.cpp' -o -name '*.c' -o -name '*.cc'
 alias fcco="find . \( -name '*.h' -o -name '*.cpp' \) -perm -600"
 
 alias fall="find . \( \( -name .svn -o -name .git \) -prune \) -o -type f -print0 | xargs -0 glark $*"
+
+fjar () {
+    find . -type f -name "$1*.jar"
+}
