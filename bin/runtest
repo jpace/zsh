@@ -1,0 +1,12 @@
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
+
+args=$*
+
+if [ -e Rakefile ]
+then
+    run_ruby_test $*
+elif [ -e build.gradle ]
+then
+    run_java_test $*
+fi

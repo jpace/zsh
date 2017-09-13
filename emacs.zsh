@@ -11,6 +11,18 @@ ecd() {
     echo ${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) default-directory) ')}
 }
 
+# the rootname of the current file in Emacs:
+ecr() {
+    x=`ecf`
+    echo $x:t:r
+}
+
+# the basename of the current file in Emacs:
+ecb() {
+    x=`ecf`
+    echo $x:t
+}
+
 # changes to the directory of the current buffer in Emacs
 # credit: http://chneukirchen.org/blog/archive/2015/02/10-fancy-zsh-tricks-you-may-not-know.html
 cde () {
@@ -32,10 +44,15 @@ ec() {
     done
 }
 
-ecn() {
-    ffn=${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) buffer-file-name) ')}
-    echo $ffn:t:r
-}
-
 # currently open file in Emacs:
 alias -g E='`ecf`'
+alias -g EF='`ecf`'
+
+# directory of the current file
+alias -g ED='`ecd`'
+
+# rootname of the current file
+alias -g ER='`ecr`'
+
+# basename of the current file
+alias -g EB='`ecb`'
