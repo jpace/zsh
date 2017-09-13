@@ -1,0 +1,18 @@
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
+
+if [[ $# > 0 ]]
+then
+    name=$1
+    if [[ $name:e != "rb" ]]
+    then
+        echo "not a ruby file"
+        exit 1
+    fi
+    name=$name:s/lib/test
+    name=$name:h/${name:t:r:s/_test//}_test.rb
+    echo "name: $name"
+    ruby -Itest -Itest/unit -Ilib $name
+else
+    rake test
+fi

@@ -88,3 +88,5 @@ alias runeclipse=/opt/eclipse/eclipse
 source_if_exists "ta"
 
 alias psjava='ps auxw | grep java'
+
+t() { runtest $* }
