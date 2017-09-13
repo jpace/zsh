@@ -60,6 +60,8 @@ alias -g LN='| awk "{print FNR \" \" \$0 }"'
 alias -g D='*(/om[1])'
 alias -g F='*(.om[1])'
 
+alias -g J='jpace'
+
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
 # Find matching names, not going into .svn directories.
