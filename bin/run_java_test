@@ -6,13 +6,16 @@ then
     name=$1
     if [[ $name:e != "java" ]]
     then
-        echo "not a java file"
+        echo "not a java file: $name"
         exit 1
     fi
-    name=$name:s/lib/test
-    name=$name:h/${name:t:r:s/_test//}_test.rb
-    echo "name: $name"
-    java -Itest -Itest/unit -Ilib $name
+    name=`echo src/**/*.java(om[1])`
+    name=$name:r:s/src\/test\/java\//
+    name=$name:r:s/src\/main\/java\//
+    name=$name:gs/\//./
+    name=$name:gs/Test//Test
+    echo $name
+    gradle test --offline --tests $name
 else
-    rake test
+    gradle clean test --offline
 fi

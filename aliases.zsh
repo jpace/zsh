@@ -1,11 +1,6 @@
 #!/usr/bin/zsh
 # -*- sh -*-
 
-# find shortcuts
-# f() { find . -name $* | sort }
-
-source_if_exists "find"
-
 alias h='history -5000'
 alias hg='history -5000 | egrep'
 

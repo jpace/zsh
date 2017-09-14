@@ -21,13 +21,13 @@ alias -g F='*(.om[1])'
 # change to the most recent directory:
 % ls D
 
-# open the most recent file (see separate entry for "o")
-% o F
+# open the most recent file in Emacs (see separate entry for "ec"):
+% ec F
 
 alias -g S='| sort'
 alias -g SN='| sort -n'
 
-# sort names:
+# sort by name:
 % find -name \*.rb S
 
 # sort by file length:
@@ -41,11 +41,57 @@ alias -g LN='| awk "{print FNR \" \" \$0 }"'
 % find D -type f S LN
 ```
 
+Some Emacs shortcuts:
+
+```shell
+# the current file in Emacs
+ecf() {
+    echo ${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) buffer-file-name) ')}
+}
+# detailed list of the current file in Emacs
+% ls -l `ecf`
+
+# the directory of the current file in Emacs (same as "ecf | xargs dirname"):
+ecd() {
+    echo ${(Q)~$(emacsclient -e '(with-current-buffer (window-buffer (selected-window)) default-directory) ')}
+}
+# change to the current directory in Emacs
+% cd `ecd`
+
+ec() {
+    for i in $*
+    do
+        emacsclient --no-wait $i
+    done
+}
+# open the file in Emacs:
+% ec README.md
+
+# currently open file in Emacs:
+alias -g EF='`ecf`'
+# same as the above example:
+% ls -l EF
+
+# directory of the current file
+alias -g ED='`ecd`'
+# see above
+% cd ED
+
+# rootname (e.g., "Array.java") of the current file:
+alias -g ER='`ecr`'
+# find 
+
+# basename of the current file
+alias -g EB='`ecb`'
+# search for occurrences of the basename, which is likely a class in Java:
+% glark EB **/*.java
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jpace/zsh.
 
 ## License
 
-The is available as open source under the terms of the [MIT
+This available as open source under the terms of the [MIT
 license](http://opensource.org/licenses/MIT).

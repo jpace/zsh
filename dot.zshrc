@@ -14,6 +14,7 @@ then
 else
     hash -d zshdir=~/.config/zsh
 fi
+path=(~zshdir/bin $path)
 
 fpath=(~/lib/zsh ~zshdir $fpath)
 autoload -U compinit && compinit
@@ -79,6 +80,7 @@ source_if_exists() {
     fi
 }
 
+source_if_exists "find"
 source_if_exists "aliases"
 source_if_exists "environment"
 source_if_exists "java"
