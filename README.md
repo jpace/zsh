@@ -17,31 +17,28 @@ Lately I've used global aliases much more often, such as the below:
 # most recent directory and file:
 alias -g D='*(/om[1])'
 alias -g F='*(.om[1])'
-```
 
-Usage:
-
-```shell
 # change to the most recent directory:
 % ls D
 
 # open the most recent file (see separate entry for "o")
 % o F
-```
 
-```shell
 alias -g S='| sort'
 alias -g SN='| sort -n'
-```
 
-Usage
-
-```shell
 # sort names:
 % find -name \*.rb S
 
 # sort by file length:
 % wc **/*.rb SN
+
+# Prepend line numbers to each line:
+alias -g LN='| awk "{print FNR \" \" \$0 }"'
+% find -type f LN
+
+# mix them; prepend line numbers to the files under the most recent directory, sorted:
+% find D -type f S LN
 ```
 
 ## Contributing
