@@ -4,12 +4,13 @@
 if [[ $# > 0 ]]
 then
     name=$1
+    echo "name: $name"
     if [[ $name:e != "java" ]]
     then
         echo "not a java file: $name"
         exit 1
     fi
-    name=`echo src/**/*.java(om[1])`
+    # name=`echo src/**/*.java(om[1])`
     name=$name:r:s/src\/test\/java\//
     name=$name:r:s/src\/main\/java\//
     name=$name:gs/\//./
