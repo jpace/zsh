@@ -4,8 +4,6 @@
 # search path for the cd command
 cdpath=(~ ..)
 
-path=(~/bin ~/bin/svn ~/bin/java $path)
-
 setopt promptsubst
 
 if [ -e /opt/org/incava/zsh ]
@@ -15,44 +13,14 @@ else
     hash -d zshdir=~/.config/zsh
 fi
 
+path=(~/bin ~/bin/svn ~/bin/java $path ~zshdir/bin)
+
 fpath=(~/lib/zsh ~zshdir $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
 
 setopt prompt_subst
-
-function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '±' && return
-    svn info >/dev/null 2>/dev/null && echo '☿' && return
-    echo ' '
-}
-
-function git_branch {
-    git symbolic-ref --short HEAD
-    # echo branch
-}
-
-PROMPT2='> '
-PROMPT3='+ '
-
-# cool, but hard to get used to:
-# RPROMPT="%~ %m %*"
-
-RPROMPT="$(git_branch)%*"
-
-# get the name of the branch we are on
-git_prompt_info() { 
-    git branch | awk '/^\*/ { print $2 }'
-}
-get_git_dirty() { 
-    git diff --quiet || echo '*'
-}
-
-PROMPT="%{$fg[blue]%}%c %{$fg_bold[red]%}$(git_branch)$(get_git_dirty)%{$fg[blue]%} $ %{$reset_color%}"
-
-# RPROMPT="%{$bg[green]%}$(git_branch)%{$reset_color%}"
-RPROMPT="%F{2}$(git_branch)%%f"
 
 ## functions for displaying neat stuff in *term title
 case $TERM in
@@ -82,6 +50,7 @@ source_if_exists() {
 source_if_exists "aliases"
 source_if_exists "environment"
 source_if_exists "java"
+source_if_exists $HOST
 
 if [[ x$HOST = xeddie ]]
 then
@@ -133,17 +102,18 @@ export PATH="/usr/local/heroku/bin:$PATH"
 # when logging in via Putty:
 if [[ $LC_CONNFROM = "one" ]]
 then
-    cd ~isbr/dev4
+    cd ~is
 elif [[ $LC_CONNFROM = "two" ]]
 then
     cd tmp; emacs -nw
 elif [[ $LC_CONNFROM = "three" ]]
 then
-    cd ~isbr/dev4
+    cd ~sag
 fi
 
-source ~/.rvm/scripts/rvm
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
-rvm use 2.3
+if [[ -e ~/.rvm/scripts/rvm ]]
+then
+    source ~/.rvm/scripts/rvm
+    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+    rvm use 2.3
+fi
