@@ -9,10 +9,12 @@ then
         echo "not a java file"
         exit 1
     fi
-    name=$name:s/lib/test
-    name=$name:h/${name:t:r:s/_test//}_test.rb
+	name=$name:r:s/src\/test\/java\// 
+	name=$name:r:s/src\/main\/java\// 
+	name=$name:gs/\//./ 
+	name=$name:gs/Test//Test 
     echo "name: $name"
-    java -Itest -Itest/unit -Ilib $name
+    gradle test --offline --tests $name
 else
-    rake test
+    gradle clean test --offline
 fi
