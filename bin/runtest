@@ -3,12 +3,12 @@
 
 args=$*
 
-if [ -e Rakefile ]
+if [[ -e Rakefile ]]
 then
-    echo "found Rakefile ..."
+    echo "found rake file"
     run_ruby_test $*
-elif [ -e build.gradle ]
+elif [[ -e build.gradle ]]
 then
-    echo "found build.gradle ..."
+    echo "found gradle file"
     run_java_test $*
 fi

@@ -4,17 +4,30 @@
 if [[ $# > 0 ]]
 then
     name=$1
+    echo "name: $name"
     if [[ $name:e != "java" ]]
     then
-        echo "not a java file"
+        echo "not a java file: $name"
         exit 1
     fi
-	name=$name:r:s/src\/test\/java\// 
-	name=$name:r:s/src\/main\/java\// 
-	name=$name:gs/\//./ 
-	name=$name:gs/Test//Test 
-    echo "name: $name"
-    gradle test --offline --tests $name
+    # name=`echo src/**/*.java(om[1])`
+    # this is essentially $name:s/$PWD//, but the slashes baffle Zsh and me.
+    name=$name:s/$PWD//
+    p=$PWD
+    n=$name:t
+    name=$name:h
+    while [[ $name != $p ]]
+    do
+        n=$name:t/$n
+        name=$name:h
+    done
+    
+    n=$n:r:s/src\/test\/java\//
+    n=$n:r:s/src\/main\/java\//
+    n=$n:gs/\//./
+    n=$n:gs/Test//Test
+    echo $n
+    gradle test --offline --tests $n
 else
     gradle clean test --offline
 fi
