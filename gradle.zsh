@@ -1,4 +1,5 @@
-# -*- sh -*-
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
 
 alias gct='gradle clean test --offline'
 alias gr='gradle --offline'
@@ -18,4 +19,13 @@ gtest() {
 }
 
 # path=(/opt/org/gradle/gradle-4.0/bin $path)
-path=(/opt/org/gradle/gradle-3.4.1/bin $path)
+
+if [ -e /opt/gradle-3.4.1/bin ]
+then 
+     path=(/opt/gradle-3.4.1/bin $path)
+elif [ -e /opt/org/gradle-3.4.1/bin ]
+then
+     path=(/opt/org/gradle/gradle-3.4.1/bin $path)
+fi
+
+echo "path: $path"
