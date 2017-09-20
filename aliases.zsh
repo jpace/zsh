@@ -62,6 +62,9 @@ alias -g F='*(.om[1])'
 
 alias -g J='jpace'
 
+# returns the most recent file within a project, appropriate to the project
+alias -g R='`find_recent`'
+
 scrub () { find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \; }
 
 # Find matching names, not going into .svn directories.
@@ -92,3 +95,4 @@ source_if_exists "ta"
 alias psjava='ps auxw | grep java'
 
 t() { runtest $* }
+

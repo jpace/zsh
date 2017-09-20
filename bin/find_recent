@@ -1,0 +1,13 @@
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
+
+if [ -e Rakefile ]
+then
+    print -n (lib|test)/**/*.rb(om[1])
+elif [ -e build.gradle ]
+then
+    print -n src/**/*.java(om[1])
+else
+    echo "unknown project type"
+    exit 1
+fi
