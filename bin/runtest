@@ -5,8 +5,10 @@ args=$*
 
 if [ -e Rakefile ]
 then
+    echo "found Rakefile ..."
     run_ruby_test $*
 elif [ -e build.gradle ]
 then
+    echo "found build.gradle ..."
     run_java_test $*
 fi
