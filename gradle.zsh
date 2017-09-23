@@ -20,12 +20,15 @@ gtest() {
 
 # path=(/opt/org/gradle/gradle-4.0/bin $path)
 
-if [ -e /opt/gradle-3.4.1/bin ]
-then 
-     path=(/opt/gradle-3.4.1/bin $path)
-elif [ -e /opt/org/gradle-3.4.1/bin ]
+optloc=/opt/gradle-3.4.1/bin
+optorgloc=/opt/org/gradle/gradle-3.4.1/bin
+
+if [ -e $optloc ]
 then
-     path=(/opt/org/gradle/gradle-3.4.1/bin $path)
+    alias gradle=$optloc/gradle
+elif [ -e $optorgloc ]
+then
+    alias gradle=$optorgloc/gradle
 fi
 
 echo "path: $path"
