@@ -1,0 +1,18 @@
+#!/usr/bin/zsh
+# -*- sh-mode -*-
+
+# front end for all the "em" commands
+
+subcmd=$1
+
+shift
+
+prog="em-$subcmd"
+
+if whence $prog >/dev/null
+then
+    echo "found $prog"
+    "$prog" "$@"
+else
+    echo "not valid: $prog"
+fi

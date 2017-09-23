@@ -1,0 +1,58 @@
+#compdef em
+
+# taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
+function _em {
+    local line
+
+    progs=""
+
+    for i in ~zshdir/bin/emacs/em-*(.)
+    do
+        n=$i:t:r:s/em-//
+        progs="$n $progs"
+    done
+
+    _arguments -C \
+        "1: :(quietly loudly foo bar $progs)" \
+        "*::arg:->args"
+
+    case $line[1] in
+        "glark")
+            _em_glark
+        ;;
+        "open")
+            _em_open
+        ;;
+        "current-basename" | "current-directory" | "current-file" | "current-rootname")
+        ;;
+        "")
+        ;;
+        *)
+            _em_any
+        ;;
+    esac
+}
+
+function _em_glark {
+    _arguments \
+        "--usual"
+    _files
+}
+
+function _em_open {
+    _files
+}
+
+function _em_any {
+    _files
+}
+
+function _em_quietly {
+    _arguments \
+        "--silent[Dont output anything]"
+}
+
+function _em_loudly {
+    _arguments \
+        "--repeat=[Repat the <message> any number of times]"
+}    

@@ -1,0 +1,4 @@
+#!/usr/bin/zsh
+# -*- sh-mode -*-
+
+em-files | grep -v ".emacs.desktop" | xargs glark $*
