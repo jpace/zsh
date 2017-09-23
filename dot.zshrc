@@ -12,6 +12,13 @@ then
 else
     hash -d zshdir=~/.config/zsh
 fi
+
+path=(~zshdir/bin $path)
+for i in ~zshdir/bin/*(/)
+do
+    path=($i $path)    
+done
+
 path=(~zshdir/bin $path)
 
 path=(~/bin ~/bin/svn ~/bin/java $path ~zshdir/bin)

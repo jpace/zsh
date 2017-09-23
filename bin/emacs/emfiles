@@ -1,0 +1,21 @@
+#!/usr/bin/ruby -w
+# -*- ruby -*-
+
+# returns a list of the files currently in Emacs. Assumes the presence of ~/.emacs.desktop
+
+require 'pathname'
+
+emfile = Pathname.new "#{ENV['HOME']}/.emacs.desktop"
+
+re = Regexp.new '^  "(/\S+)"'
+
+files = emfile.readlines.inject(Array.new) do |list, line|
+  md = re.match line
+  pn = md && Pathname.new(md[1])
+  if pn && pn.exist? && pn.file?
+    list << pn
+  end
+  list
+end
+
+puts files
