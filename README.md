@@ -87,6 +87,32 @@ alias -g EB='`ecb`'
 % glark EB **/*.java
 ```
 
+Most recent is the `em` frontend. Inspired by `git`, `em` has subcommands that are delegated, and
+works with Z shell completions:
+
+```shell
+# same as ec
+% em open some/file.rb
+
+# same as ecf
+% em current-file
+
+# same as ecd
+% em current-directory
+
+# alias for current-directory
+% em pwd
+
+# prints a list of the files currently in emacs:
+% em files
+
+# searches through all files currently in emacs:
+% em glark tr.Ace.setVerbose
+
+# searches through all Ruby files currently in emacs:
+% em glark --match-name '\.rb$' 'def\s+initialize'
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/jpace/zsh.
