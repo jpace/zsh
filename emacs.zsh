@@ -41,5 +41,3 @@ alias -g ER='`ecr`'
 
 # basename of the current file
 alias -g EB='`ecb`'
-
-# compdef _em em

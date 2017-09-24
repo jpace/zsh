@@ -3,16 +3,48 @@
 
 # front end for all the "em" commands
 
+typeset -gA em_aliases
+
+em_aliases=(
+    pwd   current-directory
+    pwf   current-file
+    o     open
+    fs    files
+    b     current-basename
+    r     current-rootname
+)
+
 subcmd=$1
 
+if [[ $# -eq 0 ]]
+then
+    dir=$0:h
+    echo "subcommands:"
+    for i in $dir/em-*(.)
+    do
+        n=$i:t:r:s/em-//
+        echo "    $n"
+    done
+    exit 1
+fi
+
 shift
+
+alias=${em_aliases[$subcmd]}
+
+if [[ "$alias" ]]
+then
+    subcmd=$alias
+fi
 
 prog="em-$subcmd"
 
 if whence $prog >/dev/null
 then
-    echo "found $prog"
+    echo "found $prog" >&2
     "$prog" "$@"
 else
-    echo "not valid: $prog"
+    echo "not valid: $prog" >&2
 fi
+
+exit 0

@@ -12,6 +12,12 @@ function _em {
         progs="$n $progs"
     done
 
+    # aliases
+    for i in pwd pwf
+    do
+        progs="$i $progs"
+    done
+
     _arguments -C \
         "1: :(quietly loudly foo bar $progs)" \
         "*::arg:->args"
@@ -56,3 +62,7 @@ function _em_loudly {
     _arguments \
         "--repeat=[Repat the <message> any number of times]"
 }    
+
+# Local variables:
+# Mode: sh
+# End:
