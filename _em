@@ -61,7 +61,10 @@ function _em_quietly {
 function _em_loudly {
     _arguments \
         "--repeat=[Repat the <message> any number of times]"
-}    
+}
+
+# execute on first tab (which is otherwise buffered)
+_em
 
 # Local variables:
 # Mode: sh
