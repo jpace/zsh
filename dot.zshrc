@@ -55,9 +55,10 @@ source_if_exists() {
     fi
 }
 
-source_if_exists "find"
 source_if_exists "aliases"
+source_if_exists "dirs"
 source_if_exists "environment"
+source_if_exists "find"
 source_if_exists "java"
 source_if_exists $HOST
 
@@ -70,15 +71,14 @@ then
     source_if_exists "home"
 fi
 
-source_if_exists "pvn"
 source_if_exists "emacs"
-source_if_exists "help"
-# source_if_exists "e"
-# source_if_exists "o"
-# source_if_exists "s"
-source_if_exists "svn"
-source_if_exists "pwd"
+source_if_exists "git"
 source_if_exists "gradle"
+source_if_exists "help"
+source_if_exists "pvn"
+source_if_exists "pwd"
+source_if_exists "ruby"
+source_if_exists "svn"
 
 setopt extendedglob
 

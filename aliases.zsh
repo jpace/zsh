@@ -25,8 +25,6 @@ alias crw='chmod ag+w -R .'
 alias mt='make tests'
 alias mk='make --no-print-directory'
 
-source_if_exists "dirs"
-
 alias grep='glark --grep'
 
 alias -g XA=' | xargs'
@@ -69,11 +67,6 @@ fnn() { find . \( -name .svn -prune \) -o -name $* -print | sort }
 alias sz='source .zshrc'
 
 alias rj='java_reformat.rb'
-
-source_if_exists "svn"
-source_if_exists "gradle"
-source_if_exists "git"
-source_if_exists "ruby"
 
 alias runeclipse=/opt/eclipse/eclipse
 
