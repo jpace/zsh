@@ -1,0 +1,21 @@
+#compdef rake
+
+function _rake {
+    local cachefile=.raketasks
+    
+    if [[ -f Rakefile ]]
+    then
+        if [[ ! -f $cachefile || Rakefile -nt $cachefile ]]
+        then
+            rake --tasks --all | /bin/grep -v 'rake /' | cut -d " " -f 2 > $cachefile
+        fi
+        compadd $(cat $cachefile)
+    fi
+}
+
+# execute on first tab (which is otherwise buffered)
+_rake
+
+# Local variables:
+# Mode: sh
+# End:
