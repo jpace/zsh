@@ -84,3 +84,4 @@ alias psjava='ps auxw | grep java'
 
 t() { runtest $* }
 
+alias pv=/opt/sag/sown/bin/pv
