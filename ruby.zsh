@@ -18,5 +18,5 @@ rtc() {
     r=${t:gs/_test//:t:r}_test.rb
     p=$t:h/$r
     echo $p
-    rt $p
+    rt $p $*
 }
