@@ -1,0 +1,40 @@
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
+
+title=$1
+shift
+echo title: "<<$title>>"
+
+category=$1
+shift
+echo category: $category
+
+date=`echo $(date +"%Y-%m-%d %H:%M:%S %z")`
+echo date: $date
+
+fdate=`date +"%Y-%m-%d"`
+fname=`echo $title | sed -e 's/ /_/g' -e 's/\.//g' -e 's/,//g'`
+file="_posts/$fdate-$fname.md"
+echo file: $file
+
+if [[ -e $file ]]
+then
+    echo "file already exists: $file"
+    exit 1
+fi
+
+cat >$file <<EOF
+---
+layout:     post
+title:      "$title"
+date:       $date
+categories: $category
+---
+text here.
+
+> Quote -- Author
+
+# Related
+
+* [One Life, Eight Categories](/incr-sanity/life/2017/05/06/eight-categories.html)
+EOF
