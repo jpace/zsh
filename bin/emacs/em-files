@@ -1,21 +1,7 @@
-#!/usr/bin/ruby -w
-# -*- ruby -*-
+#!/usr/bin/zsh -f
+# -*- sh-mode -*-
 
-# returns a list of the files currently in Emacs. Assumes the presence of ~/.emacs.desktop
+# returns a list of the files currently in Emacs.
 
-require 'pathname'
-
-emfile = Pathname.new "#{ENV['HOME']}/.emacs.desktop"
-
-re = Regexp.new '^  "(/\S+)"'
-
-files = emfile.readlines.inject(Array.new) do |list, line|
-  md = re.match line
-  pn = md && Pathname.new(md[1])
-  if pn && pn.exist? && pn.file?
-    list << pn
-  end
-  list
-end
-
-puts files
+emacsclient -e '(mapcar (function buffer-file-name) (buffer-list))' | sed -e 's/^(//' -e 's/)$//' -e 's/ /\n/g' | sed -e '/^nil$/d' -e 's/^\"//' -e 's/\"$//'
+                                                                                                          
