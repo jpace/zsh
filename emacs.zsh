@@ -12,15 +12,17 @@ alias -g ED='`em-current-directory`'
 
 # the rootname of the current file in Emacs:
 alias ecr='em-current-rootname'
-alias -g ER='`ecr`'
+alias -g ER='`em-current-rootname`'
 
 # the basename of the current file in Emacs:
 alias ecb='em-current-basename'
-alias -g EB='`ecb`'
+alias -g EB='`em-current-basename`'
 
 # current Java file converted to a class name (org.incava.Foo)
 alias ecjc='em-current-java-classname'
-alias -g EJC='`ecjc`'
+alias -g EJC='`em-current-java-classname`'
+
+alias -g EJT='`em-current-java-test`'
 
 # changes to the directory of the current buffer in Emacs
 # credit: http://chneukirchen.org/blog/archive/2015/02/10-fancy-zsh-tricks-you-may-not-know.html
