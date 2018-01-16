@@ -8,6 +8,6 @@ then
     echo $name
     
 else
-    echo not Java file
+    echo not a Java file: $name
     exit 1
 fi
