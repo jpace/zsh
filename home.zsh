@@ -33,6 +33,7 @@ hash -d incava.rails=~/proj/org/incava/rails
 hash -d railtut=~incava/rails/tutorial
 hash -d rtsapp=~railtut/it0/sample_app
 
-hash -d sown=~sag/is/sown
+hash -d sag=/opt/com/sag
+hash -d sown=~sag/sown
 
 export JAVA_COMPILER=NONE

@@ -18,7 +18,7 @@ Lately I've used global aliases much more often, such as the below:
 alias -g D='*(/om[1])'
 alias -g F='*(.om[1])'
 
-# change to the most recent directory:
+# list the most recent directory:
 % ls D
 
 # open the most recent file in Emacs (see separate entry for "ec"):
