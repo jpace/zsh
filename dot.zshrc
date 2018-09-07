@@ -62,7 +62,7 @@ source_if_exists "find"
 source_if_exists "java"
 source_if_exists $HOST
 
-if [[ x$HOST = xeddie ]]
+if [[ x`hostname -s` = xeddie ]]
 then
     source_if_exists "work"
 elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]]

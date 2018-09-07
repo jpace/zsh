@@ -1,14 +1,14 @@
-#compdef em
+#compdef sw
 
 # taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
-function _em {
+function _sw {
     local line
 
     progs=""
 
-    for i in ~zshdir/bin/emacs/em-*(.)
+    for i in /opt/sag/sown/bin/sw-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=$i:t:r:s/sw-//
         progs="$n $progs"
     done
 
@@ -19,52 +19,49 @@ function _em {
     done
 
     _arguments -C \
-        "1: :(quietly loudly foo bar $progs)" \
+        "1: :(help $progs)" \
         "*::arg:->args"
 
     case $line[1] in
-        "glark")
-            _em_glark
-        ;;
-        "open")
-            _em_open
-        ;;
-        "current-basename" | "current-directory" | "current-file" | "current-rootname")
-        ;;
-        "")
+        "log")
+            _sw_log
         ;;
         *)
-            _em_any
+            _sw_none
         ;;
     esac
 }
 
-function _em_glark {
+function _sw_log {
     _arguments \
-        "--usual"
+        "--format[oneline,]" \
+        "--limit[N entries; default is 5]"
     _files
 }
 
-function _em_open {
+function _sw_open {
     _files
 }
 
-function _em_any {
+function _sw_any {
     _files
 }
 
-function _em_quietly {
+function _sw_none {
+}
+
+function _sw_quietly {
     _arguments \
-        "--silent[no output]"
+        "--silent[Dont output anything]"
 }
 
-function _em_loudly {
+function _sw_loudly {
     _arguments \
         "--repeat=[Repeat the <message> any number of times]"
 }
 
 # execute on first tab (which is otherwise buffered)
-_em
+_sw
 
 # Local variables:
 # Mode: sh
