@@ -5,6 +5,8 @@ alias gct='gradle clean test --offline'
 alias gr='gradle --offline'
 alias gb='gradle build --offline'
 alias gt='gradle test --offline'
+alias gct='gradle clean test build --offline'
+alias gcb='gradle clean build'
 
 gst() { gradle test --offline --tests $* }
 

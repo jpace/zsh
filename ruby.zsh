@@ -14,9 +14,26 @@ rtc() {
     f=`ecf`
     echo file: $f
     t=$f:gs/lib/test/
-    echo $t
+    echo t: $t
     r=${t:gs/_test//:t:r}_test.rb
     p=$t:h/$r
-    echo $p
+    echo p: $p
     rt $p $*
+}
+
+rubytest() {
+    local f=$1
+    echo file: $f
+    t=$f:gs/lib/test/
+    echo t: $t
+    r=${t:gs/_test//:t:r}_test.rb
+    p=$t:h/$r
+    echo p: $p
+    rt $p $*
+}
+
+rtr() {
+    f=`\ls -rta1  {test/**/*_test.rb,lib/**/*.rb} | tail -1`
+    echo file: $f
+    rubytest $f
 }
