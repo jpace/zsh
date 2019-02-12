@@ -6,9 +6,12 @@ cdpath=(~ ..)
 
 setopt promptsubst
 
-if [ -e /opt/org/incava/zsh ]
+dir=`dirname $0`
+echo dir: $dir
+
+if [ -e /opt/org/incava/home/zsh ]
 then
-    hash -d zshdir=/opt/org/incava/zsh
+    hash -d zshdir=/opt/org/incava/home/zsh
 else
     hash -d zshdir=~/.config/zsh
 fi
@@ -60,14 +63,13 @@ source_if_exists "dirs"
 source_if_exists "environment"
 source_if_exists "find"
 source_if_exists "java"
-source_if_exists $HOST
 
-if [[ x$HOST = xeddie ]]
+source_if_exists $HOST
+if [[ x$HOME = xeddie ]]
 then
     source_if_exists "work"
-elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]]
+elif [[ x$HOST = xdubhe || HOST = xcanopus ]]
 then
-    source_if_exists "dubhe"
     source_if_exists "home"
 fi
 

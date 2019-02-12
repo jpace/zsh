@@ -36,3 +36,6 @@ export TZ="US/Eastern"
 
 # omit '/' from chars; thus ctrl-w kills back to next element if at the end of a path
 export WORDCHARS='*?_-.[]~=&;!#$%^(){}<>'
+
+setopt HIST_IGNORE_SPACE
+

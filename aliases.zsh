@@ -85,4 +85,7 @@ alias psjava='ps auxw | grep java'
 
 t() { runtest $* }
 
-alias pv=/opt/com/sag/sown/bin/pv
+alias pv=/opt/sag/pvn2/bin/pv
+
+alias rmcolors="perl -pe 's/\[\d+m//g'"
+alias zapcolors="perl -pi -e 's/\[\d+m//g'"

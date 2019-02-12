@@ -1,14 +1,14 @@
-#compdef em
+#compdef ynk
 
 # taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
-function _em {
+function _ynk {
     local line
 
     progs=""
 
-    for i in ~zshdir/bin/emacs/em-*(.)
+    for i in /opt/sag/yenkins/bin/ynk-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=$i:t:r:s/ynk-//
         progs="$n $progs"
     done
 
@@ -23,48 +23,38 @@ function _em {
         "*::arg:->args"
 
     case $line[1] in
-        "glark")
-            _em_glark
-        ;;
-        "open")
-            _em_open
-        ;;
-        "current-basename" | "current-directory" | "current-file" | "current-rootname")
-        ;;
-        "")
-        ;;
         *)
-            _em_any
+            _ynk_any
         ;;
     esac
 }
 
-function _em_glark {
+function _ynk_glark {
     _arguments \
         "--usual"
     _files
 }
 
-function _em_open {
+function _ynk_open {
     _files
 }
 
-function _em_any {
+function _ynk_any {
     _files
 }
 
-function _em_quietly {
+function _ynk_quietly {
     _arguments \
-        "--silent[no output]"
+        "--silent[Dont output anything]"
 }
 
-function _em_loudly {
+function _ynk_loudly {
     _arguments \
         "--repeat=[Repeat the <message> any number of times]"
 }
 
 # execute on first tab (which is otherwise buffered)
-_em
+_ynk
 
 # Local variables:
 # Mode: sh
