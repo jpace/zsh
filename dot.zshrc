@@ -6,12 +6,16 @@ cdpath=(~ ..)
 
 setopt promptsubst
 
-if [ -e /opt/org/incava/zsh ]
-then
-    hash -d zshdir=/opt/org/incava/zsh
-else
-    hash -d zshdir=~/.config/zsh
-fi
+dir=`dirname $0`
+echo dir: $dir
+
+for i in /opt/org/incava/home/zsh /opt/incava/home/zsh
+do
+    if [ -e $i ]
+    then
+        hash -d zshdir=$i
+    fi
+done
 
 path=(~zshdir/bin $path)
 for i in ~zshdir/bin/*(/)
@@ -45,13 +49,13 @@ case $TERM in
 esac
 
 source_if_exists() {
-    echo "seeking $1 ..."
+    echo -n "seeking $1 ... "
     if [[ -e ~zshdir/$1.zsh ]]
     then
-	    echo "found $1 ..."
+	    echo "found $1"
 	    source ~zshdir/$1.zsh
     else
-	    echo "didn't find $1 ..."
+	    echo "didn't find $1"
     fi
 }
 
@@ -60,14 +64,12 @@ source_if_exists "dirs"
 source_if_exists "environment"
 source_if_exists "find"
 source_if_exists "java"
-source_if_exists $HOST
 
-if [[ x`hostname -s` = xeddie ]]
+if [[ x$HOST = xeddie ]]
 then
     source_if_exists "work"
-elif [[ x$HOST = xdubhe || x$HOST = xcanopus ]]
+elif [[ x$HOST = xdubhe || HOST = xcanopus ]]
 then
-    source_if_exists "dubhe"
     source_if_exists "home"
 fi
 

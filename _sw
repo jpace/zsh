@@ -60,8 +60,6 @@ function _sw_loudly {
         "--repeat=[Repeat the <message> any number of times]"
 }
 
-echo "sw?"
-
 # execute on first tab (which is otherwise buffered)
 _sw
 
