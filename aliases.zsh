@@ -2,7 +2,8 @@
 # -*- sh -*-
 
 alias h='history -5000'
-alias hg='history -5000 | egrep'
+alias hg='history -5000 | grep'
+alias hgg='history -5000 | glark'
 
 alias zap='rm -i'
 

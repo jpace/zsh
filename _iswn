@@ -1,15 +1,18 @@
-#compdef sw
+#compdef iswn
 
 # taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
-function _sw {
+function _iswn {
     local line
 
     progs=""
 
-    for i in /opt/sag/sown/bin/sw-*(.)
+echo "hello?"
+
+    for i in /opt/sag/sown/bin/iswn-*(.)
     do
-        n=$i:t:r:s/sw-//
+        n=$i:t:r:s/iswn-//
         progs="$n $progs"
+	echo "progs: $progs"
     done
 
     # aliases
@@ -24,46 +27,46 @@ function _sw {
 
     case $line[1] in
         "log")
-            _sw_log
+            _iswn_log
         ;;
         *)
-            _sw_none
+            _iswn_none
         ;;
     esac
 }
 
-function _sw_log {
+function _iswn_log {
     _arguments \
         "--format[oneline,]" \
         "--limit[N entries; default is 5]"
     _files
 }
 
-function _sw_open {
+function _iswn_open {
     _files
 }
 
-function _sw_any {
+function _iswn_any {
     _files
 }
 
-function _sw_none {
+function _iswn_none {
 }
 
-function _sw_quietly {
+function _iswn_quietly {
     _arguments \
         "--silent[Dont output anything]"
 }
 
-function _sw_loudly {
+function _iswn_loudly {
     _arguments \
         "--repeat=[Repeat the <message> any number of times]"
 }
 
-echo "sw?"
+echo "wtf?"
 
 # execute on first tab (which is otherwise buffered)
-_sw
+_iswn
 
 # Local variables:
 # Mode: sh

@@ -6,7 +6,12 @@ shift
 echo title: "<<$title>>"
 
 category=$1
-shift
+if [[ -z $category ]]
+then
+    category=life
+else
+    shift
+fi
 echo category: $category
 
 date=`echo $(date +"%Y-%m-%d %H:%M:%S %z")`

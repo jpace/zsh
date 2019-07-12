@@ -15,3 +15,5 @@ do
     n=$i:t
     hash -d $n=$i
 done
+
+hash -d dl=~/Downloads
