@@ -8,6 +8,6 @@ alias j6='source ~/bin/jdk 1.6'
 alias j7='source ~/bin/jdk 1.7'
 alias j8='source ~/bin/jdk 1.8'
 
-# alias jv=/opt/org/incava/javalin/bin/jv
+alias jv=/opt/org/incava/javalin/bin/jv
 
 alias jt='run_java_test.rb `ecf`'

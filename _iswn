@@ -1,15 +1,18 @@
-#compdef em
+#compdef iswn
 
 # taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
-function _em {
+function _iswn {
     local line
 
     progs=""
 
-    for i in ~zshdir/bin/emacs/em-*(.)
+echo "hello?"
+
+    for i in /opt/sag/sown/bin/iswn-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=$i:t:r:s/iswn-//
         progs="$n $progs"
+	echo "progs: $progs"
     done
 
     # aliases
@@ -19,52 +22,51 @@ function _em {
     done
 
     _arguments -C \
-        "1: :(quietly loudly foo bar $progs)" \
+        "1: :(help $progs)" \
         "*::arg:->args"
 
     case $line[1] in
-        "glark")
-            _em_glark
-        ;;
-        "open")
-            _em_open
-        ;;
-        "current-basename" | "current-directory" | "current-file" | "current-rootname")
-        ;;
-        "")
+        "log")
+            _iswn_log
         ;;
         *)
-            _em_any
+            _iswn_none
         ;;
     esac
 }
 
-function _em_glark {
+function _iswn_log {
     _arguments \
-        "--usual"
+        "--format[oneline,]" \
+        "--limit[N entries; default is 5]"
     _files
 }
 
-function _em_open {
+function _iswn_open {
     _files
 }
 
-function _em_any {
+function _iswn_any {
     _files
 }
 
-function _em_quietly {
+function _iswn_none {
+}
+
+function _iswn_quietly {
     _arguments \
-        "--silent[no output]"
+        "--silent[Dont output anything]"
 }
 
-function _em_loudly {
+function _iswn_loudly {
     _arguments \
         "--repeat=[Repeat the <message> any number of times]"
 }
 
+echo "wtf?"
+
 # execute on first tab (which is otherwise buffered)
-_em
+_iswn
 
 # Local variables:
 # Mode: sh

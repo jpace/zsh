@@ -1,14 +1,14 @@
-#compdef em
+#compdef yira
 
 # taken from http://mads-hartmann.com/2017/08/06/writing-zsh-completion-scripts.html
-function _em {
+function _yira {
     local line
 
     progs=""
 
-    for i in ~zshdir/bin/emacs/em-*(.)
+    for i in /opt/sag/yira/bin/yira-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=$i:t:r:s/yira-//
         progs="$n $progs"
     done
 
@@ -23,48 +23,42 @@ function _em {
         "*::arg:->args"
 
     case $line[1] in
-        "glark")
-            _em_glark
-        ;;
-        "open")
-            _em_open
-        ;;
-        "current-basename" | "current-directory" | "current-file" | "current-rootname")
-        ;;
-        "")
-        ;;
-        *)
-            _em_any
+        fetch)
+            _yira_fetch
         ;;
     esac
 }
 
-function _em_glark {
+function _yira_fetch {
     _arguments \
-        "--usual"
+        "--key" \
+	"--status" \
+	"--any-status" \
+	"--assignee" \
+	"--any-assignee" \
+	"--name" \
+	"--version" \
+	"--project" \
+	"--any-project" \
+	"--format"
+}
+
+function _yira_any {
     _files
 }
 
-function _em_open {
-    _files
-}
-
-function _em_any {
-    _files
-}
-
-function _em_quietly {
+function _yira_quietly {
     _arguments \
-        "--silent[no output]"
+        "--silent[Dont output anything]"
 }
 
-function _em_loudly {
+function _yira_loudly {
     _arguments \
         "--repeat=[Repeat the <message> any number of times]"
 }
 
 # execute on first tab (which is otherwise buffered)
-_em
+_yira
 
 # Local variables:
 # Mode: sh
