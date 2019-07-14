@@ -4,11 +4,14 @@
 function _em {
     local line
 
+    dir=~zshdir/bin/emacs
+    prefix=em
+
     progs=""
 
-    for i in ~zshdir/bin/emacs/em-*(.)
+    for i in $dir/$prefix-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=`echo $i:t:r | sed -e "s/$prefix-//"`
         progs="$n $progs"
     done
 

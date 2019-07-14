@@ -6,13 +6,18 @@ function _iswn {
 
     progs=""
 
-echo "hello?"
+    sagdir=/opt/sag
+    if [[ ! -e $sagdir ]]
+    then
+        sagdir=/opt/com/sag
+    fi
 
-    for i in /opt/sag/sown/bin/iswn-*(.)
+    echo "sagdir: $sagdir"
+
+    for i in $sagdir/sown/bin/iswn-*(.)
     do
         n=$i:t:r:s/iswn-//
         progs="$n $progs"
-	echo "progs: $progs"
     done
 
     # aliases

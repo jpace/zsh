@@ -1,7 +1,7 @@
-#!/usr/bin/zsh
+#!/bin/sh
 # -*- sh-mode -*-
 
-name=`em-current-file`
+name=`em current-file`
 if [[ $name:e == "java" ]]
 then
     name=`echo $name:r | sed -r -e 's/.*(org|com)\//\1\//' | tr '/' '.'`

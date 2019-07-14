@@ -7,7 +7,6 @@ cdpath=(~ ..)
 setopt promptsubst
 
 dir=`dirname $0`
-echo dir: $dir
 
 for i in /opt/org/incava/home/zsh /opt/incava/home/zsh
 do

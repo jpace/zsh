@@ -1,5 +1,0 @@
-#!/usr/bin/zsh -f
-# -*- sh-mode -*-
-
-cd `em-current-directory`
-pwd

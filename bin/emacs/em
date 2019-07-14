@@ -15,14 +15,15 @@ em_aliases=(
 )
 
 subcmd=$1
+prefix=em
 
 if [[ $# -eq 0 ]]
 then
     dir=$0:h
     echo "subcommands:"
-    for i in $dir/em-*(.)
+    for i in $dir/$prefix-*(.)
     do
-        n=$i:t:r:s/em-//
+        n=`echo $i:t:r | sed -e "s/$prefix-//"`
         echo "    $n"
     done
     exit 1
@@ -37,14 +38,16 @@ then
     subcmd=$alias
 fi
 
-prog="em-$subcmd"
+prog="$prefix-$subcmd"
+for extname in "" .rb .sh .zsh
+do
+    name=$prog$extname
+    if whence $name >/dev/null
+    then
+        "$name" "$@"
+        exit $?
+    fi
+done
 
-if whence $prog >/dev/null
-then
-    echo "found $prog" >&2
-    "$prog" "$@"
-else
-    echo "not valid: $prog" >&2
-fi
-
-exit 0
+echo "not valid: $prog" >&2
+exit 1

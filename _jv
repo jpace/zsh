@@ -4,16 +4,19 @@
 function _jv {
     local line
 
+    dir=/opt/org/incava/javalin/bin
+    prefix=jv
+
     progs=""
 
-    for i in /opt/incava/javalin/bin/jv-*(.)
+    for i in $dir/$prefix-*(.)
     do
-        n=$i:t:r:s/jv-//
+        n=`echo $i:t:r | sed -e "s/$prefix-//"`
         progs="$n $progs"
     done
 
     # aliases
-    for i in pwd pwf
+    for i in version
     do
         progs="$i $progs"
     done

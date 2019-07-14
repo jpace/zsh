@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/bin/sh
 # -*- sh-mode -*-
 
 # "emacsclient --no-wait foo.rb bar.txt" only opens the first file.
