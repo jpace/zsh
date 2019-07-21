@@ -1,5 +1,7 @@
 #!/bin/sh -f
 # -*- sh-mode -*-
 
-cd `em current-directory`
+dir=`em current-directory`
+echo dir: $dir
+cd $dir
 pwd

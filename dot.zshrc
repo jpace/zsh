@@ -49,12 +49,13 @@ esac
 
 source_if_exists() {
     echo -n "seeking $1 ... "
-    if [[ -e ~zshdir/$1.zsh ]]
+    fname=~zshdir/$1.zsh
+    if [[ -e $fname ]]
     then
 	    echo "found $1"
-	    source ~zshdir/$1.zsh
+	    source $fname
     else
-	    echo "didn't find $1"
+	    echo "did not find $1"
     fi
 }
 
@@ -72,6 +73,7 @@ then
     source_if_exists "home"
 fi
 
+source_if_exists $HOST
 source_if_exists "emacs"
 source_if_exists "git"
 source_if_exists "gradle"

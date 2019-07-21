@@ -3,9 +3,9 @@
 
 # front end for all the "em" commands
 
-typeset -gA em_aliases
+typeset -A cmd_aliases
 
-em_aliases=(
+cmd_aliases=(
     pwd   current-directory
     pwf   current-file
     o     open
@@ -14,7 +14,6 @@ em_aliases=(
     r     current-rootname
 )
 
-subcmd=$1
 prefix=em
 
 if [[ $# -eq 0 ]]
@@ -29,20 +28,24 @@ then
     exit 1
 fi
 
-shift
+subcmd=$1
 
-alias=${em_aliases[$subcmd]}
+alias=${cmd_aliases[$subcmd]}
 
 if [[ "$alias" ]]
 then
     subcmd=$alias
 fi
 
+shift
+
+dir=$0:h
+
 prog="$prefix-$subcmd"
 for extname in "" .rb .sh .zsh
 do
-    name=$prog$extname
-    if whence $name >/dev/null
+    name=$dir/$prog$extname
+    if [[ -e $name ]]
     then
         "$name" "$@"
         exit $?
