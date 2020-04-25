@@ -11,3 +11,5 @@ alias j8='source ~/bin/jdk 1.8'
 alias jv=/opt/org/incava/javalin/bin/jv
 
 alias jt='run_java_test.rb `ecf`'
+
+source ~/bin/jdk 1.8

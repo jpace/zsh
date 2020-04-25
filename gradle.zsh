@@ -20,15 +20,11 @@ gtest() {
     gst $f
 }
 
-optloc=/opt/gradle-3.4.1
-optorgloc=/opt/org/gradle/gradle-3.4.1
-
-for i in $optloc $optorgloc
+for i in /opt/gradle-3.4.1 /opt/org/gradle/gradle-5.6.3
 do
     p=$i/bin
     if [[ -e $p ]]
     then
-        echo adding gradle bin: $p
         path=($p $path)
     fi
 done

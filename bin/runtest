@@ -11,4 +11,6 @@ elif [[ -e build.gradle ]]
 then
     echo "found gradle file"
     run_java_test $*
+else
+    echo "not handled"
 fi

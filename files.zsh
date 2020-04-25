@@ -24,3 +24,23 @@ imv() {
 path() {
   print -l ${${@:-$PWD}:a}
 }
+
+scrub () {
+    find $* -type f \( -name '*~' -o -name '*.bak' ! \( -name flow.xml.bak \)  \) -print -exec rm -f {} \;
+}
+
+# Find matching names, not going into .svn directories.
+fn() {
+    find . \( -name .svn -prune \) -o -name \*$*\* -print | sort
+}
+
+fnn() {
+    find . \( -name .svn -prune \) -o -name $* -print | sort
+}
+
+# most recent directory and file:
+alias -g D='*(/om[1])'
+alias -g F='*(.om[1])'
+
+alias cx='chmod +x'
+alias crw='chmod ag+w -R .'

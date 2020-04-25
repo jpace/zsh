@@ -6,27 +6,26 @@ cdpath=(~ ..)
 
 setopt promptsubst
 
-dir=`dirname $0`
-
-for i in /opt/org/incava/home/zsh /opt/incava/home/zsh
-do
-    if [ -e $i ]
-    then
-        hash -d zshdir=$i
-    fi
+SRC=${(%):-%N}
+while [ -h "$SRC" ]; do
+  DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
+  SRC="$(readlink "$SRC")"
+  [[ $SRC != /* ]] && SRC="$DIR/$SRC"
 done
+DOTFILES_DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
+
+hash -d zshdir=$DOTFILES_DIR
 
 path=(~zshdir/bin $path)
 for i in ~zshdir/bin/*(/)
 do
-    path=($i $path)    
+    path=($i $path)
 done
 
-path=(~zshdir/bin $path)
+path=(~zshdir/bin ~/bin $path)
 
-path=(~/bin ~/bin/svn ~/bin/java $path ~zshdir/bin)
+fpath=(~zshdir $fpath)
 
-fpath=(~/lib/zsh ~zshdir $fpath)
 autoload -U compinit && compinit
 autoload -U promptinit && promptinit
 autoload -U colors && colors
@@ -61,9 +60,20 @@ source_if_exists() {
 
 source_if_exists "aliases"
 source_if_exists "dirs"
+source_if_exists "emacs"
 source_if_exists "environment"
+source_if_exists "files"
 source_if_exists "find"
+source_if_exists "git"
+source_if_exists "glark"
+source_if_exists "gradle"
+source_if_exists "help"
 source_if_exists "java"
+source_if_exists "pvn"
+source_if_exists "rails"
+source_if_exists "ruby"
+source_if_exists "svn"
+source_if_exists "ta"
 
 if [[ x$HOST = xeddie ]]
 then
@@ -74,14 +84,6 @@ then
 fi
 
 source_if_exists $HOST
-source_if_exists "emacs"
-source_if_exists "git"
-source_if_exists "gradle"
-source_if_exists "help"
-source_if_exists "pvn"
-source_if_exists "pwd"
-source_if_exists "ruby"
-source_if_exists "svn"
 
 setopt extendedglob
 
@@ -99,8 +101,6 @@ then
        mesg n
 fi
 export TERM=xterm-256color
-
-source ~/bin/jdk 1.8
 
 zstyle ':prompt:ganneff' colors true
 
