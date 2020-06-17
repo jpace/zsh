@@ -14,6 +14,8 @@ while [ -h "$SRC" ]; do
 done
 DOTFILES_DIR="$( cd -P "$( dirname "$SRC" )" && pwd )"
 
+echo "DOTFILES_DIR: $DOTFILES_DIR"
+
 hash -d zshdir=$DOTFILES_DIR
 
 path=(~zshdir/bin $path)
@@ -22,7 +24,9 @@ do
     path=($i $path)
 done
 
-path=(~zshdir/bin ~/bin $path)
+path=(~zshdir/bin ~/bin ~/Programs $path)
+
+echo "path: $path"
 
 fpath=(~zshdir $fpath)
 
@@ -123,9 +127,10 @@ then
     cd ~sag
 fi
 
+echo "~/.rvm/scripts/rvm"
+
 if [[ -e ~/.rvm/scripts/rvm ]]
 then
     source ~/.rvm/scripts/rvm
-    export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-    rvm use 2.3
+    export PATH="$GEM_HOME/bin:$PATH:$HOME/.rvm/bin"
 fi

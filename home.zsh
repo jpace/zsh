@@ -1,4 +1,4 @@
-hash -d incava=/opt/org/incava
+hash -d incava=~/Projects/org/incava
 
 hash -d doctorj=~incava/doctorj
 hash -d doctorjsrc=~incava/doctorj/src/main/java/org/incava/doctorj
